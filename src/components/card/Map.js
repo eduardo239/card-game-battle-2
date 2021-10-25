@@ -4,34 +4,35 @@ import { ReactComponent as LvIcon } from '../../assets/uil_atom.svg';
 import { ReactComponent as TpIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as SzIcon } from '../../assets/uil_arrows-h-alt.svg';
 
-const Map = () => {
+const Map = ({ children, data }) => {
   return (
     <section>
       <div className='card'>
         <div className='card-poster'>
-          <img src={img} alt='' />
+          <img src={img} alt={data?.name} />
         </div>
         <div className='card-body'>
           <div>
-            <h5>Nome do Mapa</h5>
+            <h5>{data?.name}</h5>
           </div>
 
           <div>
             <span className='card-item'>
               <SzIcon />
-              <span>140</span>
+              <span>{data?.size}</span>
             </span>
           </div>
           <div>
             <span className='card-item'>
               <LvIcon />
-              <span>100</span>
+              <span>{data?.level}</span>
             </span>
             <span className='card-item'>
               <TpIcon />
-              <span>100</span>
+              <span>{data?.type}</span>
             </span>
           </div>
+          {children}
         </div>
       </div>
     </section>

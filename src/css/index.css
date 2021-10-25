@@ -5,6 +5,8 @@
   --light: #ffffff;
   --dark: #121212;
 
+  --yellow: #ffff81;
+
   --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
 
   --font-very-small: 0.6rem;
@@ -79,12 +81,19 @@ input:active {
   outline: none;
   border: 2px dashed;
 }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--primary);
+  width: 100%;
+}
 /* ----------------------- helpers ----------------------- */
 .flex {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 /* not in use */
 .flex-start {
@@ -101,6 +110,9 @@ input:active {
 }
 .flex-space-between {
   justify-content: space-between;
+}
+.flex-1 {
+  flex: 1;
 }
 .none {
   display: none;
@@ -123,7 +135,9 @@ input:active {
   outline: none;
   border: 2px solid transparent;
   border-radius: 0;
-  min-width: 200px;
+  min-width: 160px;
+  max-width: 200px;
+  width: 100%;
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: var(--font-h6);
@@ -235,10 +249,11 @@ input:active {
 }
 
 .card-price {
+  /* transform: rotate(-45deg); */
   position: absolute;
-  top: -12px;
-  right: -12px;
-  background: var(--light);
+  top: 0px;
+  right: -10px;
+  background-color: var(--yellow);
   padding: 4px;
   border: 2px solid;
 }
@@ -279,12 +294,18 @@ input:active {
   justify-content: flex-end;
 }
 /* ----------------------- page ----------------------- */
+.mw-700 {
+  min-width: 700px;
+}
+
 .page {
   background: var(--light);
   color: var(--dark);
   padding: 2rem;
-  min-width: 700px;
   min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
 }
 .page-container {
   margin-bottom: 22px;
@@ -309,8 +330,6 @@ input:active {
   padding: 4px;
   max-height: 400px;
   overflow-y: scroll;
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 .positions {
   display: flex;
@@ -349,7 +368,7 @@ input:active {
   color: var(--dark);
 }
 .boss {
-  background-color: var(--dark);
+  background-color: var(--primary);
   color: var(--primary);
 }
 /* ----------------------- list ----------------------- */
@@ -373,6 +392,34 @@ input:active {
   align-items: center;
   gap: 10px;
   line-height: 1.2;
+}
+
+.alert {
+  position: relative;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0rem;
+  font-size: var(--font-small);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+.alert-info {
+  color: #084298;
+  background-color: #cfe2ff;
+  border-color: #b6d4fe;
 }
 /* ----------------------- scroll ----------------------- */
 ::-webkit-scrollbar {

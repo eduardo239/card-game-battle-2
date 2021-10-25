@@ -8,19 +8,23 @@ const Navigation = () => {
         <Link to='/'>Home</Link>
       </li>
       <li>
-        <Link to='/page-1'>Page 1</Link>
+        <Link to='/page-1'>Hero</Link>
       </li>
       <li>
-        <Link to='/page-2'>Page 2</Link>
+        <Link to='/page-2'>Monsters</Link>
       </li>
       <li>
-        <Link to='/page-3'>Page 3</Link>
+        <Link to='/page-3'>Maps</Link>
       </li>
       <li>
-        <Link to='/page-4'>Page 4</Link>
+        <Link to='/page-4'>Items</Link>
       </li>
       <li>
         <Link to='/page-5'>Page Game</Link>
+      </li>
+
+      <li>
+        <Link to='/page-shop'>Shop</Link>
       </li>
     </ul>
   );

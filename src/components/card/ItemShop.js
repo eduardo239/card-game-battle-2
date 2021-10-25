@@ -6,22 +6,22 @@ import { ReactComponent as LvIcon } from '../../assets/uil_atom.svg';
 import { ReactComponent as TpIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as TgIcon } from '../../assets/uil_pricetag-alt.svg';
 
-const ItemShop = () => {
+const ItemShop = ({ children, data }) => {
   return (
     <section>
       <div className='card'>
         <div className='card-poster'>
-          <img src={img} alt='' />
+          <img src={img} alt={data?.name} />
           <span className='card-price'>
-            <TgIcon /> <span>100.20</span>
+            <TgIcon /> <span>{data?.price}</span>
           </span>
         </div>
         <div className='card-body'>
           <div>
-            <h5>Nome do Item</h5>
+            <h5>{data?.name}</h5>
           </div>
           <div>
-            <p>A Wikipédia é um projeto de enciclopédia colaborativa.</p>
+            <p>{data?.description}</p>
           </div>
           <div>
             <span className='card-item'>
@@ -36,13 +36,14 @@ const ItemShop = () => {
           <div>
             <span className='card-item'>
               <LvIcon />
-              <span>100</span>
+              <span>{data?.rarity}</span>
             </span>
             <span className='card-item'>
               <TpIcon />
-              <span>100</span>
+              <span>{data?.type}</span>
             </span>
           </div>
+          {children}
         </div>
       </div>
     </section>

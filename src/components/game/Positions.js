@@ -26,7 +26,7 @@ const Positions = () => {
         </div>
 
         <div className='po fight'>
-          <MdIcon />
+          <MdIcon className='dash' />
         </div>
 
         <div className='po boss'>

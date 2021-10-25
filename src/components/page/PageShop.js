@@ -6,7 +6,7 @@ const Page4 = () => {
   const { items } = useSelector(state => state.game);
   return (
     <section>
-      <PageCards title='Select the Item' data={items} type='items' />
+      <PageCards title='Shop !' data={items} type='shop' />
     </section>
   );
 };

@@ -7,7 +7,7 @@ const Fight = () => {
     <section className='page-container'>
       <div className='page'>
         <h4>Título da Página</h4>
-        <div className='flex flex-space-between gap-10'>
+        <div className='flex flex-space-between gap-10 flex-1'>
           <HeroCard />
           <div className='flex-center-center'>
             <h1>VS</h1>

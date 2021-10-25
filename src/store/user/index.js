@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: 0,
-  name: ''
+  name: '',
+  hero: {},
+  monsters: [],
+  items: [],
+  gold: 400
 };
 
 export const userSlice = createSlice({

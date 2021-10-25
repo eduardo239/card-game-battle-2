@@ -1,13 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './css/App.css';
-
-import { ReactComponent as OnIcon } from './assets/uil_dice-one.svg';
-import { ReactComponent as TwIcon } from './assets/uil_dice-two.svg';
-import { ReactComponent as ThIcon } from './assets/uil_dice-three.svg';
-import { ReactComponent as FoIcon } from './assets/uil_dice-four.svg';
-import { ReactComponent as FiIcon } from './assets/uil_dice-five.svg';
-import { ReactComponent as SiIcon } from './assets/uil_dice-six.svg';
 
 import HeroCard from './components/card/Hero';
 import MonsterCard from './components/card/Monster';
@@ -21,10 +14,17 @@ import Confirm from './components/modal/Confirm';
 import PageGiftTrap from './components/game/GiftTrap';
 import Positions from './components/game/Positions';
 
-import { selectUserName, setUserName } from './store/user';
-import { selectName } from './store/game';
-import { useSelector, useDispatch } from 'react-redux';
 import Navigation from './components/ui/Navigation';
+import { selectUserName, setUserName } from './store/user';
+import {
+  fetchHeroes,
+  fetchItems,
+  fetchMaps,
+  fetchMonsters,
+  getRandomNumber
+} from './store/game';
+import { selectFightName } from './store/game/fight';
+import { useSelector, useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
 
 import Page1 from './components/page/Page1';
@@ -32,24 +32,43 @@ import Page2 from './components/page/Page2';
 import Page3 from './components/page/Page3';
 import Page4 from './components/page/Page4';
 import Page5 from './components/page/Page5';
+import PageShop from './components/page/PageShop';
 
 import InfoHero from './components/info/Hero';
 import InfoMonster from './components/info/Monster';
 import InfoItem from './components/info/Item';
+import Alert from './components/messages/Alert';
+import MenuPlay from './components/menu/Play';
+import Dice from './components/game/Dice';
 
 function App() {
-  const userName = useSelector(selectUserName);
-  const gameName = useSelector(selectName);
   const dispatch = useDispatch();
+  const userName = useSelector(selectUserName);
+  const fightName = useSelector(selectFightName);
+
+  const { isError, isLoading } = useSelector(state => state.game.status);
+  const { dice } = useSelector(state => state.game);
 
   const [n, setN] = useState('');
 
+  useEffect(() => {
+    dispatch(fetchHeroes());
+    dispatch(fetchMonsters());
+    dispatch(fetchMaps());
+    dispatch(fetchItems());
+  }, [dispatch]);
+
   return (
     <div className='flex-center-center'>
+      {/* status */}
+      {isLoading && <div className='loading'>loading</div>}
+      {isError && <div className='error'>Error</div>}
+
       {/* navigation */}
       <section>
         <Navigation />
       </section>
+
       {/* pages */}
       <Switch>
         <Route exact path='/'>
@@ -70,12 +89,24 @@ function App() {
         <Route path='/page-5'>
           <Page5 />
         </Route>
+        <Route path='/page-shop'>
+          <PageShop />
+        </Route>
       </Switch>
+
+      <hr />
+
+      <br />
+      {/* alert */}
+      <Alert type='success' message=' A simple primary alert—check it out!' />
+      <Alert type='danger' message=' A simple primary alert—check it out!' />
+      <Alert type='info' message=' A simple primary alert—check it out!' />
+
       <br />
       {/* info */}
       <section className='list'>
         <InfoHero />
-        <InfoHero />
+        <InfoMonster />
         <InfoMonster />
         <InfoItem />
         <InfoItem />
@@ -83,8 +114,8 @@ function App() {
       </section>
       <br />
       <section>
-        <h3>{gameName}</h3>
         <p>{userName}</p>
+        <h4>{fightName}</h4>
       </section>
       <br />
       {/* position */}
@@ -104,8 +135,18 @@ function App() {
         >
           mudar nome para {n}
         </button>
-        <button className='btn btn-secondary'>dec</button>
+        <button
+          className='btn btn-secondary'
+          onClick={() => dispatch(getRandomNumber(1, 6))}
+        >
+          random {dice}
+        </button>
         <button className='btn btn-secondary'>if odd</button>
+      </section>
+      <br />
+      {/* item */}
+      <section>
+        <Dice dice={dice} />
       </section>
       <br />
       {/* form */}
@@ -142,32 +183,44 @@ function App() {
       <br />
       {/* button with icon */}
       <MenuGame />
+      <MenuPlay />
       <br />
       {/* hero */}
-      <HeroCard />
+      <HeroCard>
+        <div>
+          <button className='btn btn-primary'>Selecionar</button>
+        </div>
+      </HeroCard>
       <br />
       {/* monster */}
-      <MonsterCard />
+      <MonsterCard>
+        <div>
+          <button className='btn btn-primary'>Selecionar</button>
+        </div>
+      </MonsterCard>
       <br />
       {/* map */}
-      <MapCard />
+      <MapCard>
+        <div>
+          <button className='btn btn-primary'>Selecionar</button>
+        </div>
+      </MapCard>
       <br />
       {/* card shop */}
-      <ItemShopCard />
+      <ItemShopCard>
+        <div>
+          <button className='btn btn-primary'>Comprar</button>
+        </div>
+      </ItemShopCard>
       <br />
       {/* item */}
-      <ItemCard />
+      <ItemCard>
+        <div>
+          <button className='btn btn-primary'>Selecionar</button>
+        </div>
+      </ItemCard>
       <br />
-      {/* item */}
-      <section>
-        <OnIcon className='dice' />
-        <TwIcon className='dice' />
-        <ThIcon className='dice' />
-        <FoIcon className='dice-active' />
-        <FiIcon className='dice' />
-        <SiIcon className='dice' />
-      </section>
-      <br />
+
       {/* item */}
       <Confirm />
       <br />
