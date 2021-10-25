@@ -7,6 +7,7 @@
 
   --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
 
+  --font-very-small: 0.6rem;
   --font-small: 0.8rem;
   --font-h6: 1rem;
   --font-h5: 1.333rem;
@@ -65,11 +66,32 @@ img {
   display: block;
   max-width: 100%;
 }
+
+input {
+  padding: 13px 11px 12px 11px;
+  border: 2px solid;
+  color: var(--primary);
+  min-width: 200px;
+}
+
+input:focus,
+input:active {
+  outline: none;
+  border: 2px dashed;
+}
 /* ----------------------- helpers ----------------------- */
 .flex {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
+}
+/* not in use */
+.flex-start {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 .flex-center-center {
   display: flex;
@@ -90,6 +112,10 @@ img {
 
 .gap-20 {
   gap: 2rem;
+}
+
+.icon-bg-light path {
+  fill: var(--light);
 }
 /* ----------------------- button ----------------------- */
 .btn {
@@ -137,6 +163,43 @@ img {
 .btn-secondary svg path,
 .btn-secondary svg {
   fill: var(--primary);
+}
+
+.btn-icon {
+  border: none;
+  outline: none;
+  background: var(--primary);
+  color: var(--light);
+
+  border-radius: 30px;
+
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  height: 18px;
+  width: 18px;
+}
+
+.btn-icon:hover {
+  cursor: pointer;
+  filter: invert(100%);
+}
+/* ----------------------- input ----------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+.field label {
+  font-size: var(--font-very-small);
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 /* ----------------------- card ----------------------- */
 .card {
@@ -241,7 +304,7 @@ img {
 }
 /* ----------------------- position ----------------------- */
 .positions-container {
-  background-color: var(--dark);
+  background-color: #f1f1f1;
   border: 2px solid #333;
   padding: 4px;
   max-height: 400px;
@@ -255,7 +318,7 @@ img {
   flex-wrap: wrap;
   justify-content: center;
 }
-.position {
+.po {
   height: 130px;
   width: 130px;
 
@@ -265,27 +328,52 @@ img {
   font-size: var(--font-h6);
   border: 2px solid;
 }
+.po path {
+  stroke: var(--dark);
+  stroke-width: 2px;
+}
 .none {
   background: var(--light);
-  color: var(--primary);
+  color: var(--dark);
 }
 .init {
   background-color: var(--dark);
   color: var(--primary);
 }
 .fight {
-  background-color: rgb(137, 255, 137);
+  background-color: var(--light);
   color: var(--dark);
 }
 .item {
-  background-color: rgb(255, 253, 128);
+  background-color: var(--light);
   color: var(--dark);
 }
 .boss {
-  background-color: rgb(154, 201, 255);
-  color: var(--dark);
+  background-color: var(--dark);
+  color: var(--primary);
 }
+/* ----------------------- list ----------------------- */
+.list {
+  width: 100%;
+}
+.list-item {
+  display: grid;
+  grid-template-columns: 1fr repeat(6, auto);
+  align-items: center;
 
+  border: 1px solid #343434;
+  padding: 4px;
+  margin-bottom: 4px;
+}
+.list-item > span {
+  border-right: 1px solid #343434;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
 /* ----------------------- scroll ----------------------- */
 ::-webkit-scrollbar {
   width: 10px;
@@ -298,4 +386,31 @@ img {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+/* ----------------------- scroll ----------------------- */
+.blink {
+  animation: blink-animation 3s infinite;
+}
+
+.dash {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 10s linear forwards;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

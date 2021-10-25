@@ -1,37 +1,90 @@
+import { useState } from 'react';
+
 import './css/App.css';
-import img from './assets/IMG.jpg';
-import { ReactComponent as HpIcon } from './assets/uil_heart-sign.svg';
-import { ReactComponent as MpIcon } from './assets/uil_flask-potion.svg';
-import { ReactComponent as LvIcon } from './assets/uil_atom.svg';
-import { ReactComponent as TpIcon } from './assets/uil_cell.svg';
-import { ReactComponent as TgIcon } from './assets/uil_pricetag-alt.svg';
-import { ReactComponent as SzIcon } from './assets/uil_arrows-h-alt.svg';
-import { ReactComponent as TmIcon } from './assets/uil_times.svg';
-import { ReactComponent as NxIcon } from './assets/uil_arrow-right.svg';
+
 import { ReactComponent as OnIcon } from './assets/uil_dice-one.svg';
 import { ReactComponent as TwIcon } from './assets/uil_dice-two.svg';
 import { ReactComponent as ThIcon } from './assets/uil_dice-three.svg';
 import { ReactComponent as FoIcon } from './assets/uil_dice-four.svg';
 import { ReactComponent as FiIcon } from './assets/uil_dice-five.svg';
 import { ReactComponent as SiIcon } from './assets/uil_dice-six.svg';
-//
+
 import HeroCard from './components/card/Hero';
 import MonsterCard from './components/card/Monster';
 import MapCard from './components/card/Map';
 import ItemShopCard from './components/card/ItemShop';
 import ItemCard from './components/card/Item';
 import MenuGame from './components/menu/Game';
-import PageCards from './components/page/Cards';
-import PageFight from './components/page/Fight';
+import PageCards from './components/game/Cards';
+import PageFight from './components/game/Fight';
 import Confirm from './components/modal/Confirm';
-import PageGiftTrap from './components/page/GiftTrap';
-import Positions from './components/page/Positions';
+import PageGiftTrap from './components/game/GiftTrap';
+import Positions from './components/game/Positions';
+
+import { selectUserName, setUserName } from './store/user';
+import { selectName } from './store/game';
+import { useSelector, useDispatch } from 'react-redux';
+import Navigation from './components/ui/Navigation';
+import { Route, Switch } from 'react-router';
+
+import Page1 from './components/page/Page1';
+import Page2 from './components/page/Page2';
+import Page3 from './components/page/Page3';
+import Page4 from './components/page/Page4';
+import Page5 from './components/page/Page5';
+
+import InfoHero from './components/info/Hero';
+import InfoMonster from './components/info/Monster';
+import InfoItem from './components/info/Item';
 
 function App() {
+  const userName = useSelector(selectUserName);
+  const gameName = useSelector(selectName);
+  const dispatch = useDispatch();
+
+  const [n, setN] = useState('');
+
   return (
     <div className='flex-center-center'>
+      {/* navigation */}
       <section>
-        <h1>Game App</h1>
+        <Navigation />
+      </section>
+      {/* pages */}
+      <Switch>
+        <Route exact path='/'>
+          <Page1 />
+        </Route>
+        <Route path='/page-1'>
+          <Page1 />
+        </Route>
+        <Route path='/page-2'>
+          <Page2 />
+        </Route>
+        <Route path='/page-3'>
+          <Page3 />
+        </Route>
+        <Route path='/page-4'>
+          <Page4 />
+        </Route>
+        <Route path='/page-5'>
+          <Page5 />
+        </Route>
+      </Switch>
+      <br />
+      {/* info */}
+      <section className='list'>
+        <InfoHero />
+        <InfoHero />
+        <InfoMonster />
+        <InfoItem />
+        <InfoItem />
+        <InfoItem />
+      </section>
+      <br />
+      <section>
+        <h3>{gameName}</h3>
+        <p>{userName}</p>
       </section>
       <br />
       {/* position */}
@@ -39,10 +92,39 @@ function App() {
       <br />
       {/* menu */}
       <section className='flex'>
-        <button className='btn btn-primary'>JOGAR</button>
-        <button className='btn btn-secondary'>loja</button>
-        <button className='btn btn-secondary'>sair</button>
+        <input
+          value={n}
+          onChange={e => setN(e.target.value)}
+          placeholder='Meows..'
+        />
+
+        <button
+          className='btn btn-primary'
+          onClick={() => dispatch(setUserName(n))}
+        >
+          mudar nome para {n}
+        </button>
+        <button className='btn btn-secondary'>dec</button>
+        <button className='btn btn-secondary'>if odd</button>
       </section>
+      <br />
+      {/* form */}
+      <section>
+        <div className='field'>
+          <label htmlFor=''>Name</label>
+          <input type='text' placeholder='Meows..' />
+        </div>
+        <div className='field'>
+          <label htmlFor=''>Name</label>
+          <input type='text' />
+        </div>
+        <div className='field'>
+          <label htmlFor=''>Name</label>
+          <input type='text' />
+        </div>
+        <button className='btn btn-primary'>start</button>
+      </section>
+
       <br />
       {/* buttons */}
       <section>

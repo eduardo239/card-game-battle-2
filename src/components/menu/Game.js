@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { ReactComponent as TmIcon } from '../../assets/uil_times.svg';
-import { ReactComponent as NxIcon } from '../../assets/uil_arrow-right.svg';
-
 const MenuGame = () => {
   return (
     <section className='flex'>

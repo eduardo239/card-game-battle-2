@@ -1,8 +1,6 @@
 import React from 'react';
 import HeroCard from '../card/Hero';
 import MonsterCard from '../card/Monster';
-import ItemCard from '../card/Item';
-import MapCard from '../card/Map';
 
 const Fight = () => {
   return (

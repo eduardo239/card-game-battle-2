@@ -5,15 +5,7 @@ import { ReactComponent as MpIcon } from '../../assets/uil_flask-potion.svg';
 import { ReactComponent as LvIcon } from '../../assets/uil_atom.svg';
 import { ReactComponent as TpIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as TgIcon } from '../../assets/uil_pricetag-alt.svg';
-import { ReactComponent as SzIcon } from '../../assets/uil_arrows-h-alt.svg';
-import { ReactComponent as TmIcon } from '../../assets/uil_times.svg';
-import { ReactComponent as NxIcon } from '../../assets/uil_arrow-right.svg';
-import { ReactComponent as OnIcon } from '../../assets/uil_dice-one.svg';
-import { ReactComponent as TwIcon } from '../../assets/uil_dice-two.svg';
-import { ReactComponent as ThIcon } from '../../assets/uil_dice-three.svg';
-import { ReactComponent as FoIcon } from '../../assets/uil_dice-four.svg';
-import { ReactComponent as FiIcon } from '../../assets/uil_dice-five.svg';
-import { ReactComponent as SiIcon } from '../../assets/uil_dice-six.svg';
+
 const ItemShop = () => {
   return (
     <section>
