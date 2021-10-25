@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { api } from '../../api';
+import { TIME_DELAY } from '../../util/constants';
 
 const initialState = {
   name: 'Game App Battle',
@@ -69,20 +70,22 @@ export const {
   hasError,
   setRandomNumber
 } = gameSlice.actions;
+
 export default gameSlice.reducer;
 
+// fun
 export const getRandomNumber = (min, max) => async dispatch => {
-  let end = 1;
+  let end = 0;
 
   let int = setInterval(() => {
-    if (end > 9) {
+    if (end >= 9) {
       clearInterval(int);
     }
     dispatch(
       setRandomNumber(Math.floor(Math.random() * (max - min + 1)) + min)
     );
     end++;
-  }, 200);
+  }, TIME_DELAY);
 };
 
 // async

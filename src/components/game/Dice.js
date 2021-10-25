@@ -5,10 +5,12 @@ import { ReactComponent as ThIcon } from '../../assets/uil_dice-three.svg';
 import { ReactComponent as FoIcon } from '../../assets/uil_dice-four.svg';
 import { ReactComponent as FiIcon } from '../../assets/uil_dice-five.svg';
 import { ReactComponent as SiIcon } from '../../assets/uil_dice-six.svg';
+import { useSelector } from 'react-redux';
 
-const Dice = ({ dice }) => {
+const Dice = () => {
+  const { dice } = useSelector(state => state.game);
   return (
-    <section>
+    <section className='mt-10 mb-10'>
       <OnIcon className={`dice ${dice === 1 ? 'dice-active' : ''}`} />
       <TwIcon className={`dice ${dice === 2 ? 'dice-active' : ''}`} />
       <ThIcon className={`dice ${dice === 3 ? 'dice-active' : ''}`} />

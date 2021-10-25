@@ -1,12 +1,32 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { isEmpty } from '../../util';
 import PageCards from '../game/Cards';
+import InfoMap from '../info/Map';
+import { ReactComponent as BaIcon } from '../../assets/uil_arrow-left.svg';
+import { ReactComponent as NxIcon } from '../../assets/uil_arrow-right.svg';
 
 const Page3 = () => {
   const { maps } = useSelector(state => state.game);
+  const { map } = useSelector(state => state.user);
   return (
     <section>
-      <PageCards title='Select the Maps' data={maps} type='maps' />
+      <PageCards title='Select 1 the Map' data={maps} type='maps'>
+        <div>
+          <Link to='/page-2'>
+            <button className='btn btn-secondary'>
+              Back <BaIcon />
+            </button>
+          </Link>
+          <Link to='/page-4'>
+            <button className='btn btn-primary'>
+              Next <NxIcon />
+            </button>
+          </Link>
+        </div>
+      </PageCards>
+      {isEmpty(map) ? null : <InfoMap data={map} />}
     </section>
   );
 };

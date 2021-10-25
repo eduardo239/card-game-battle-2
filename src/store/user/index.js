@@ -1,37 +1,52 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
-  name: '',
   hero: {},
-  monsters: [],
+  map: {},
   items: [],
-  gold: 400
+  monsters: []
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    increment: state => {
-      state.value += 1;
+    addHero: (state, action) => {
+      state.hero = action.payload;
     },
-    decrement: state => {
-      state.value -= 1;
+    removeHero: state => {
+      state.hero = {};
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    addMonster: (state, action) => {
+      state.monsters.push(action.payload);
     },
-    setUserName: (state, action) => {
-      state.name = action.payload;
+    removeMonster: (state, action) => {
+      state.monsters = state.monsters.filter((m, i) => i !== action.payload);
+    },
+    addMap: (state, action) => {
+      state.map = action.payload;
+    },
+    removeMap: state => {
+      state.map = {};
+    },
+    addItem: (state, action) => {
+      state.items.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      state.items = state.items.filter((m, i) => i !== action.payload);
     }
   }
 });
 
-export const { increment, decrement, incrementByAmount, setUserName } =
-  userSlice.actions;
-
-export const selectCount = state => state.user.value;
-export const selectUserName = state => state.user.name;
+export const {
+  addHero,
+  addMonster,
+  addItem,
+  addMap,
+  removeHero,
+  removeMap,
+  removeMonster,
+  removeItem
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -8,14 +8,13 @@ import MapCard from './components/card/Map';
 import ItemShopCard from './components/card/ItemShop';
 import ItemCard from './components/card/Item';
 import MenuGame from './components/menu/Game';
-import PageCards from './components/game/Cards';
 import PageFight from './components/game/Fight';
 import Confirm from './components/modal/Confirm';
 import PageGiftTrap from './components/game/GiftTrap';
 import Positions from './components/game/Positions';
 
 import Navigation from './components/ui/Navigation';
-import { selectUserName, setUserName } from './store/user';
+import {} from './store/user';
 import {
   fetchHeroes,
   fetchItems,
@@ -23,7 +22,6 @@ import {
   fetchMonsters,
   getRandomNumber
 } from './store/game';
-import { selectFightName } from './store/game/fight';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
 
@@ -31,20 +29,16 @@ import Page1 from './components/page/Page1';
 import Page2 from './components/page/Page2';
 import Page3 from './components/page/Page3';
 import Page4 from './components/page/Page4';
-import Page5 from './components/page/Page5';
+import PageGame from './components/page/PageGame';
 import PageShop from './components/page/PageShop';
 
-import InfoHero from './components/info/Hero';
-import InfoMonster from './components/info/Monster';
-import InfoItem from './components/info/Item';
 import Alert from './components/messages/Alert';
 import MenuPlay from './components/menu/Play';
 import Dice from './components/game/Dice';
+import Home from './components/page/Home';
 
 function App() {
   const dispatch = useDispatch();
-  const userName = useSelector(selectUserName);
-  const fightName = useSelector(selectFightName);
 
   const { isError, isLoading } = useSelector(state => state.game.status);
   const { dice } = useSelector(state => state.game);
@@ -72,7 +66,7 @@ function App() {
       {/* pages */}
       <Switch>
         <Route exact path='/'>
-          <Page1 />
+          <Home />
         </Route>
         <Route path='/page-1'>
           <Page1 />
@@ -87,7 +81,7 @@ function App() {
           <Page4 />
         </Route>
         <Route path='/page-5'>
-          <Page5 />
+          <PageGame />
         </Route>
         <Route path='/page-shop'>
           <PageShop />
@@ -103,21 +97,6 @@ function App() {
       <Alert type='info' message=' A simple primary alert—check it out!' />
 
       <br />
-      {/* info */}
-      <section className='list'>
-        <InfoHero />
-        <InfoMonster />
-        <InfoMonster />
-        <InfoItem />
-        <InfoItem />
-        <InfoItem />
-      </section>
-      <br />
-      <section>
-        <p>{userName}</p>
-        <h4>{fightName}</h4>
-      </section>
-      <br />
       {/* position */}
       <Positions />
       <br />
@@ -129,12 +108,6 @@ function App() {
           placeholder='Meows..'
         />
 
-        <button
-          className='btn btn-primary'
-          onClick={() => dispatch(setUserName(n))}
-        >
-          mudar nome para {n}
-        </button>
         <button
           className='btn btn-secondary'
           onClick={() => dispatch(getRandomNumber(1, 6))}
@@ -224,9 +197,7 @@ function App() {
       {/* item */}
       <Confirm />
       <br />
-      {/* item */}
-      <PageCards />
-      <br />
+
       {/* item */}
       <br />
       <PageGiftTrap />

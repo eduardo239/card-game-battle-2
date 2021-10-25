@@ -4,14 +4,23 @@ import CardMonster from '../card/Monster';
 import CardMap from '../card/Map';
 import CardItem from '../card/Item';
 import CardItemShop from '../card/ItemShop';
+import { useDispatch } from 'react-redux';
+import { addHero, addItem, addMap, addMonster } from '../../store/user';
 
-const Cards = ({ title, data, type }) => {
+const Cards = ({ children, title, data, type }) => {
+  const dispatch = useDispatch();
+
   const mapOverHeroes = () => {
     return data.map(hero => {
       return (
         <CardHero key={hero.id} data={hero}>
           <div>
-            <button className='btn btn-primary'>Selecionar</button>
+            <button
+              className='btn btn-primary'
+              onClick={() => dispatch(addHero(hero))}
+            >
+              Selecionar
+            </button>
           </div>
         </CardHero>
       );
@@ -19,11 +28,16 @@ const Cards = ({ title, data, type }) => {
   };
 
   const mapOverMonsters = () => {
-    return data.map(monster => {
+    return data.map((monster, i) => {
       return (
-        <CardMonster key={monster.id} data={monster}>
+        <CardMonster key={monster.id} data={monster} index={i}>
           <div>
-            <button className='btn btn-primary'>Selecionar</button>
+            <button
+              className='btn btn-primary'
+              onClick={() => dispatch(addMonster(monster))}
+            >
+              Selecionar
+            </button>
           </div>
         </CardMonster>
       );
@@ -31,11 +45,16 @@ const Cards = ({ title, data, type }) => {
   };
 
   const mapOverMaps = () => {
-    return data.map(maps => {
+    return data.map((maps, i) => {
       return (
-        <CardMap key={maps.id} data={maps}>
+        <CardMap key={maps.id} data={maps} index={i}>
           <div>
-            <button className='btn btn-primary'>Selecionar</button>
+            <button
+              className='btn btn-primary'
+              onClick={() => dispatch(addMap(maps))}
+            >
+              Selecionar
+            </button>
           </div>
         </CardMap>
       );
@@ -43,11 +62,16 @@ const Cards = ({ title, data, type }) => {
   };
 
   const mapOverItems = () => {
-    return data.map(item => {
+    return data.map((item, i) => {
       return (
-        <CardItem key={item.id} data={item}>
+        <CardItem key={item.id} data={item} index={i}>
           <div>
-            <button className='btn btn-primary'>Selecionar</button>
+            <button
+              className='btn btn-primary'
+              onClick={() => dispatch(addItem(item, i))}
+            >
+              Selecionar
+            </button>
           </div>
         </CardItem>
       );
@@ -78,12 +102,7 @@ const Cards = ({ title, data, type }) => {
           {type === 'shop' && data?.length > 0 && mapOverItemsShop()}
         </div>
       </div>
-      <div className='page-buttons'>
-        <div>
-          <button className='btn btn-secondary'>Cancelar</button>
-          <button className='btn btn-primary'>OK</button>
-        </div>
-      </div>
+      <div className='page-buttons'>{children}</div>
     </section>
   );
 };
