@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/card-game-battle-2/static/css/main.b73c428f.chunk.css",
-    "main.js": "/card-game-battle-2/static/js/main.9638af8b.chunk.js",
-    "main.js.map": "/card-game-battle-2/static/js/main.9638af8b.chunk.js.map",
+    "main.css": "/card-game-battle-2/static/css/main.9c64cac5.chunk.css",
+    "main.js": "/card-game-battle-2/static/js/main.6756adff.chunk.js",
+    "main.js.map": "/card-game-battle-2/static/js/main.6756adff.chunk.js.map",
     "runtime-main.js": "/card-game-battle-2/static/js/runtime-main.1368b703.js",
     "runtime-main.js.map": "/card-game-battle-2/static/js/runtime-main.1368b703.js.map",
-    "static/js/2.2fc26bd0.chunk.js": "/card-game-battle-2/static/js/2.2fc26bd0.chunk.js",
-    "static/js/2.2fc26bd0.chunk.js.map": "/card-game-battle-2/static/js/2.2fc26bd0.chunk.js.map",
+    "static/js/2.3c2bb5d2.chunk.js": "/card-game-battle-2/static/js/2.3c2bb5d2.chunk.js",
+    "static/js/2.3c2bb5d2.chunk.js.map": "/card-game-battle-2/static/js/2.3c2bb5d2.chunk.js.map",
     "index.html": "/card-game-battle-2/index.html",
-    "static/css/main.b73c428f.chunk.css.map": "/card-game-battle-2/static/css/main.b73c428f.chunk.css.map",
-    "static/js/2.2fc26bd0.chunk.js.LICENSE.txt": "/card-game-battle-2/static/js/2.2fc26bd0.chunk.js.LICENSE.txt",
+    "static/css/main.9c64cac5.chunk.css.map": "/card-game-battle-2/static/css/main.9c64cac5.chunk.css.map",
+    "static/js/2.3c2bb5d2.chunk.js.LICENSE.txt": "/card-game-battle-2/static/js/2.3c2bb5d2.chunk.js.LICENSE.txt",
     "static/media/icon-park-outline_ghost.cd752022.svg": "/card-game-battle-2/static/media/icon-park-outline_ghost.cd752022.svg",
     "static/media/icon-park-outline_gift.ee0b503d.svg": "/card-game-battle-2/static/media/icon-park-outline_gift.ee0b503d.svg",
     "static/media/icon-park-outline_medicine-bottle.f5df450e.svg": "/card-game-battle-2/static/media/icon-park-outline_medicine-bottle.f5df450e.svg",
     "static/media/icon-park-outline_toxins.711b4974.svg": "/card-game-battle-2/static/media/icon-park-outline_toxins.711b4974.svg",
+    "static/media/uil_arrow-left.cfa5e109.svg": "/card-game-battle-2/static/media/uil_arrow-left.cfa5e109.svg",
+    "static/media/uil_arrow-right.2cbac8ca.svg": "/card-game-battle-2/static/media/uil_arrow-right.2cbac8ca.svg",
     "static/media/uil_arrows-h-alt.36310de0.svg": "/card-game-battle-2/static/media/uil_arrows-h-alt.36310de0.svg",
     "static/media/uil_atom.494a8b3a.svg": "/card-game-battle-2/static/media/uil_atom.494a8b3a.svg",
     "static/media/uil_cell.761f63f1.svg": "/card-game-battle-2/static/media/uil_cell.761f63f1.svg",
@@ -36,8 +38,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1368b703.js",
-    "static/js/2.2fc26bd0.chunk.js",
-    "static/css/main.b73c428f.chunk.css",
-    "static/js/main.9638af8b.chunk.js"
+    "static/js/2.3c2bb5d2.chunk.js",
+    "static/css/main.9c64cac5.chunk.css",
+    "static/js/main.6756adff.chunk.js"
   ]
 }
