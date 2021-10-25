@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+/* https://fonts.google.com/specimen/IBM+Plex+Mono?query=ibm+pl */
+:root {
+  --primary: #e03372;
+  --light: #ffffff;
+  --dark: #121212;
+
+  --font-mono: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+
+  --font-small: 0.8rem;
+  --font-h6: 1rem;
+  --font-h5: 1.333rem;
+  --font-h4: 1.777rem;
+  --font-h3: 2.369rem;
+  --font-h2: 3.157rem;
+  --font-h1: 4.209rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--dark);
+  color: var(--light);
+}
+h1 {
+  font-size: var(--font-h1);
+}
+h2 {
+  font-size: var(--font-h2);
+}
+h3 {
+  font-size: var(--font-h3);
+  font-weight: 400;
+}
+h4 {
+  font-size: var(--font-h4);
+  font-weight: 600;
+}
+h5 {
+  font-weight: 600;
+}
+
+p {
+  font-size: var(--font-small);
+  line-height: 1.3;
+}
+
+p,
+button,
+input {
+  letter-spacing: 0.24px;
+}
+
+span {
+  font-size: var(--font-small);
+  font-weight: 500;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+/* ----------------------- helpers ----------------------- */
+.flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.flex-space-between {
+  justify-content: space-between;
+}
+.none {
+  display: none;
+}
+
+.gap-10 {
+  gap: 1rem;
+}
+
+.gap-20 {
+  gap: 2rem;
+}
+/* ----------------------- button ----------------------- */
+.btn {
+  padding: 10px;
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 0;
+  min-width: 200px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--font-h6);
+  /* icon */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-small {
+  font-size: var(--font-small);
+}
+.btn-big {
+  font-size: var(--font-h4);
+}
+.btn:hover {
+  cursor: pointer;
+  filter: invert(100%);
+}
+.btn:active {
+  border: 2px dashed;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.btn-primary svg path,
+.btn-primary svg {
+  fill: var(--light);
+}
+.btn-secondary {
+  background-color: var(--light);
+  color: var(--primary);
+}
+
+.btn-secondary svg path,
+.btn-secondary svg {
+  fill: var(--primary);
+}
+/* ----------------------- card ----------------------- */
+.card {
+  background: var(--light);
+  color: var(--dark);
+  border: 3px solid var(--primary);
+  width: 200px;
+}
+
+.card-poster {
+  position: relative;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-body > div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-body > div:last-child {
+  margin-bottom: 0;
+}
+
+.card-item,
+.card-price {
+  display: flex;
+  align-items: center;
+}
+
+.card-price {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--light);
+  padding: 4px;
+  border: 2px solid;
+}
+/* ----------------------- dice ----------------------- */
+.dice-active path {
+  fill: var(--primary);
+}
+/* ----------------------- modal ----------------------- */
+.modal-none {
+  display: none;
+}
+.modal-show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-container {
+  min-width: 500px;
+  background: var(--light);
+  color: var(--dark);
+}
+
+.modal-container h4 {
+  text-align: center;
+  padding: 1rem 0 2rem;
+}
+
+.modal-container-body {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+/* ----------------------- page ----------------------- */
+.page {
+  background: var(--light);
+  color: var(--dark);
+  padding: 2rem;
+  min-width: 700px;
+  min-height: 400px;
+}
+.page-container {
+  margin-bottom: 22px;
+}
+.page-buttons {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.page-buttons > div {
+  display: flex;
+}
+.page h4 {
+  margin-bottom: 2rem;
+}
+/* ----------------------- position ----------------------- */
+.positions-container {
+  background-color: var(--dark);
+  border: 2px solid #333;
+  padding: 4px;
+  max-height: 400px;
+  overflow-y: scroll;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.positions {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.position {
+  height: 130px;
+  width: 130px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-h6);
+  border: 2px solid;
+}
+.none {
+  background: var(--light);
+  color: var(--primary);
+}
+.init {
+  background-color: var(--dark);
+  color: var(--primary);
+}
+.fight {
+  background-color: rgb(137, 255, 137);
+  color: var(--dark);
+}
+.item {
+  background-color: rgb(255, 253, 128);
+  color: var(--dark);
+}
+.boss {
+  background-color: rgb(154, 201, 255);
+  color: var(--dark);
+}
+
+/* ----------------------- scroll ----------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #333;
+}
+::-webkit-scrollbar-thumb {
+  background: #6b6b6b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
