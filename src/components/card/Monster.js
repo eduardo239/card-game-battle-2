@@ -1,5 +1,6 @@
 import React from 'react';
-import img from '../../assets/IMG.jpg';
+// eslint-disable-next-line no-unused-vars
+import poster_default from '../../assets/IMG.jpg';
 import { ReactComponent as HpIcon } from '../../assets/uil_heart-sign.svg';
 import { ReactComponent as MpIcon } from '../../assets/uil_flask-potion.svg';
 import { ReactComponent as LvIcon } from '../../assets/uil_atom.svg';

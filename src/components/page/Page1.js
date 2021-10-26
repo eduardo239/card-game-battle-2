@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isEmpty } from '../../util';
-import PageCards from '../game/Cards';
-import InfoHero from '../info/Hero';
 import { ReactComponent as BaIcon } from '../../assets/uil_arrow-left.svg';
 import { ReactComponent as NxIcon } from '../../assets/uil_arrow-right.svg';
+import PageCards from '../game/Cards';
+import InfoHero from '../info/Hero';
 
 const Page1 = () => {
   const { heroes } = useSelector(state => state.game);

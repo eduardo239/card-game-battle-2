@@ -6,9 +6,33 @@ import CardItem from '../card/Item';
 import CardItemShop from '../card/ItemShop';
 import { useDispatch } from 'react-redux';
 import { addHero, addItem, addMap, addMonster } from '../../store/user';
+import {
+  POSITION_TYPE1,
+  POSITION_TYPE2,
+  POSITION_TYPE3
+} from '../../util/constants';
 
 const Cards = ({ children, title, data, type }) => {
   const dispatch = useDispatch();
+
+  const addMapAndGeneratePositions = map => {
+    let positions = [];
+    let arr;
+    if (map.level === '1') {
+      positions.push((arr = POSITION_TYPE1));
+    } else if (map.level === '2') {
+      positions.push((arr = POSITION_TYPE2));
+    } else if (map.level === '3') {
+      arr = POSITION_TYPE3;
+    }
+    for (let i = 0; i < map.size; i++) {
+      positions.push(arr[Math.floor(Math.random() * arr.length)]);
+    }
+    positions[0] = 'INIT';
+    positions[positions.length - 1] = 'BOSS';
+
+    dispatch(addMap({ map, positions }));
+  };
 
   const mapOverHeroes = () => {
     return data.map(hero => {
@@ -45,13 +69,13 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverMaps = () => {
-    return data.map((maps, i) => {
+    return data.map((map, i) => {
       return (
-        <CardMap key={maps.id} data={maps} index={i}>
+        <CardMap key={map.id} data={map} index={i}>
           <div>
             <button
               className='btn btn-primary'
-              onClick={() => dispatch(addMap(maps))}
+              onClick={() => addMapAndGeneratePositions(map)}
             >
               Selecionar
             </button>

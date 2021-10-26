@@ -4,7 +4,9 @@ const initialState = {
   hero: {},
   map: {},
   items: [],
-  monsters: []
+  monsters: [],
+  positions: [],
+  position: 0
 };
 
 export const userSlice = createSlice({
@@ -24,7 +26,9 @@ export const userSlice = createSlice({
       state.monsters = state.monsters.filter((m, i) => i !== action.payload);
     },
     addMap: (state, action) => {
-      state.map = action.payload;
+      state.map = {};
+      state.map = action.payload.map;
+      state.positions = action.payload.positions;
     },
     removeMap: state => {
       state.map = {};

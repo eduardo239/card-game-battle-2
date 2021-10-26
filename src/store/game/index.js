@@ -23,7 +23,8 @@ const initialState = {
     isStarted: false,
     isOn: true,
     isUsingItem: false,
-    isOver: false
+    isOver: false,
+    isShopModalOpen: false
   }
 };
 
@@ -56,6 +57,12 @@ export const gameSlice = createSlice({
     },
     setRandomNumber: (state, action) => {
       state.dice = action.payload;
+    },
+    getNewPosition: state => {
+      state.position += state.dice;
+    },
+    toggleShopModal: state => {
+      state.status.isShopModalOpen = !state.status.isShopModalOpen;
     }
   }
 });
@@ -68,13 +75,15 @@ export const {
   mapsSuccess,
   startLoading,
   hasError,
-  setRandomNumber
+  setRandomNumber,
+  getNewPosition,
+  toggleShopModal
 } = gameSlice.actions;
 
 export default gameSlice.reducer;
 
 // fun
-export const getRandomNumber = (min, max) => async dispatch => {
+export const getRandomNumber = (min, max) => dispatch => {
   let end = 0;
 
   let int = setInterval(() => {
