@@ -1,19 +1,224 @@
 {
-  "posts": [
+  "heroes": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Wilson",
+      "type": "fire",
+      "gender": "m",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/heroes/teste1.png",
+      "icon": "fas fa-mask",
+      "poster": "/assets/heroes/hero-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jennifer",
+      "type": "water",
+      "gender": "f",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/heroes/teste2.png",
+      "icon": "fas fa-mask",
+      "poster": "/assets/heroes/hero-1.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Joana",
+      "type": "wind",
+      "gender": "f",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/heroes/teste3.png",
+      "icon": "fas fa-mask",
+      "poster": "/assets/heroes/hero-1.jpg"
     }
   ],
-  "comments": [
+  "monsters": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Pik",
+      "type": "fire",
+      "gender": "m",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/monsters/teste1.png",
+      "icon": "fas fa-ghost",
+      "poster": "/assets/monsters/mo-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jen",
+      "type": "water",
+      "gender": "f",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/monsters/teste2.png",
+      "icon": "fas fa-ghost",
+      "poster": "/assets/monsters/mo-2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "GAM",
+      "type": "wind",
+      "gender": "f",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/monsters/teste3.png",
+      "icon": "fas fa-ghost",
+      "poster": "/assets/monsters/mo-3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Mili",
+      "type": "fire",
+      "gender": "f",
+      "level": 1,
+      "exp": 0,
+      "nextLevel": 100,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/monsters/teste2.png",
+      "icon": "fas fa-ghost",
+      "poster": "/assets/monsters/mo-4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Caca",
+      "type": "water",
+      "gender": "m",
+      "level": 2,
+      "exp": 0,
+      "nextLevel": 150,
+      "hp": 100,
+      "mp": 100,
+      "image": "/img/monsters/teste2.png",
+      "icon": "fas fa-ghost",
+      "poster": "/assets/monsters/mo-5.jpg"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "maps": [
+    {
+      "id": 1,
+      "name": "BONG",
+      "type": "fire",
+      "size": 45,
+      "level": "1",
+      "image": "/img/maps/map1.png",
+      "icon": "fas fa-map",
+      "poster": "/assets/maps/map-sm.jpg"
+    },
+    {
+      "id": 2,
+      "name": "CRATOS",
+      "type": "water",
+      "size": 105,
+      "level": "2",
+      "image": "/img/maps/map1.png",
+      "icon": "fas fa-map",
+      "poster": "/assets/maps/map-sm.jpg"
+    },
+    {
+      "id": 3,
+      "name": "JHA",
+      "type": "wind",
+      "size": 175,
+      "level": "3",
+      "image": "/img/maps/map1.png",
+      "icon": "fas fa-map",
+      "poster": "/assets/maps/map-sm.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Potion HP(30)",
+      "description": "Cura 30 de vida",
+      "rarity": "normal",
+      "type": "health",
+      "price": "100",
+      "value": "30",
+      "image": "/img/items/potion_c_small.png",
+      "icon": "fas fa-flask",
+      "poster": "/assets/items/po-sm-hp.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Potion HP(60)",
+      "description": "Cura 60 de vida",
+      "rarity": "rare",
+      "type": "health",
+      "price": "180",
+      "value": "60",
+      "image": "/img/items/potion_c_small.png",
+      "icon": "fas fa-flask",
+      "poster": "/assets/items/po-md-hp.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mana MP(30)",
+      "description": "Cura 30 de mana",
+      "rarity": "normal",
+      "type": "mana",
+      "price": "90",
+      "value": "30",
+      "image": "/img/items/mana_c_small.png",
+      "icon": "fas fa-vial",
+      "poster": "/assets/items/po-sm-mn.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Mana MP(60)",
+      "description": "Cura 60 de mana",
+      "rarity": "rare",
+      "type": "mana",
+      "price": "160",
+      "value": "60",
+      "image": "/img/items/mana_c_small.png",
+      "icon": "fas fa-vial",
+      "poster": "/assets/items/po-md-mn.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Poison (50)",
+      "description": "50 de dano no inimigo",
+      "rarity": "normal",
+      "type": "bomb",
+      "price": "90",
+      "value": "50",
+      "image": "/img/items/unknown_c_small.png",
+      "icon": "fas fa-bomb",
+      "poster": "/assets/items/po-sm-pz.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Poison (100)",
+      "description": "100 de dano no inimigo",
+      "rarity": "rare",
+      "type": "bomb",
+      "price": "160",
+      "value": "100",
+      "image": "/img/items/unknown_c_small.png",
+      "icon": "fas fa-bomb",
+      "poster": "/assets/items/po-md-pz.jpg"
+    }
+  ]
 }

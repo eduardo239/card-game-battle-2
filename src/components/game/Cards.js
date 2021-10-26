@@ -35,7 +35,7 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverHeroes = () => {
-    return data.map(hero => {
+    return data?.map(hero => {
       return (
         <CardHero key={hero.id} data={hero}>
           <div>
@@ -52,7 +52,7 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverMonsters = () => {
-    return data.map((monster, i) => {
+    return data?.map((monster, i) => {
       return (
         <CardMonster key={monster.id} data={monster} index={i}>
           <div>
@@ -69,7 +69,7 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverMaps = () => {
-    return data.map((map, i) => {
+    return data?.map((map, i) => {
       return (
         <CardMap key={map.id} data={map} index={i}>
           <div>
@@ -86,7 +86,7 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverItems = () => {
-    return data.map((item, i) => {
+    return data?.map((item, i) => {
       return (
         <CardItem key={item.id} data={item} index={i}>
           <div>
@@ -103,7 +103,7 @@ const Cards = ({ children, title, data, type }) => {
   };
 
   const mapOverItemsShop = () => {
-    return data.map(item => {
+    return data?.map(item => {
       return (
         <CardItemShop key={item.id} data={item}>
           <div>
