@@ -14,7 +14,7 @@ const Page4 = () => {
     <section>
       <PageCards
         title='Select 1 the Item'
-        data={items.slice(0, 3)}
+        data={items.slice(0, 12)} // TODO:
         type='items'
       >
         <div>

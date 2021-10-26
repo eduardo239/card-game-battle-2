@@ -100,37 +100,6 @@ function App() {
 
       {/* <MenuGame />
       <MenuPlay /> */}
-      <section>
-        <div className='card'>
-          <div className='card-poster'>
-            <img
-              src={process.env.PUBLIC_URL + '/assets/items/po-sm-hp.jpg'}
-              alt='123123123'
-            />
-          </div>
-          <div className='card-body'>
-            <div>
-              <h5>HELA</h5>
-            </div>
-            <div>
-              <span className='card-item'>
-                <span>100</span>
-              </span>
-              <span className='card-item'>
-                <span>100</span>
-              </span>
-            </div>
-            <div>
-              <span className='card-item'>
-                <span>100</span>
-              </span>
-              <span className='card-item'>
-                <span>WIND</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const ItemShop = ({ children, data }) => {
     <section>
       <div className='card'>
         <div className='card-poster'>
-          <img src={img} alt={data?.name} />
+          <img src={process.env.PUBLIC_URL + data?.poster} alt={data?.name} />
           <span className='card-price'>
             <TgIcon /> <span>{data?.price}</span>
           </span>
