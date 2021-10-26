@@ -134,6 +134,7 @@ export const fetchMaps = () => async dispatch => {
 export const fetchItems = () => async dispatch => {
   dispatch(startLoading());
   try {
+    console.log(DB_URI);
     const { data } = await api.get(DB_URI);
     dispatch(itemsSuccess(data.items));
   } catch (err) {
