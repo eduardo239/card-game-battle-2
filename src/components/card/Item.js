@@ -10,7 +10,7 @@ const Item = ({ children, data }) => {
     <section>
       <div className='card'>
         <div className='card-poster'>
-          <img src={img} alt={data?.name} />
+          <img src={process.env.PUBLIC_URL + data?.poster} alt={data?.name} />
         </div>
         <div className='card-body'>
           <div>

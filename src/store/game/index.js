@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { api } from '../../api';
-import { TIME_DELAY } from '../../util/constants';
+import { DB_URI, TIME_DELAY } from '../../util/constants';
 
 const initialState = {
   name: 'Game App Battle',
@@ -92,9 +92,8 @@ export const getRandomNumber = (min, max) => async dispatch => {
 export const fetchHeroes = () => async dispatch => {
   dispatch(startLoading());
   try {
-    await api.get('/heroes').then(res => {
-      dispatch(heroSuccess(res.data));
-    });
+    const { data } = await api.get(DB_URI);
+    dispatch(heroSuccess(data.heroes));
   } catch (err) {
     console.log('[Error] ' + err.message);
     dispatch(hasError(err.message));
@@ -104,9 +103,8 @@ export const fetchHeroes = () => async dispatch => {
 export const fetchMonsters = () => async dispatch => {
   dispatch(startLoading());
   try {
-    await api.get('/monsters').then(res => {
-      dispatch(monstersSuccess(res.data));
-    });
+    const { data } = await api.get(DB_URI);
+    dispatch(monstersSuccess(data.monsters));
   } catch (err) {
     console.log('[Error] ' + err.message);
     dispatch(hasError(err.message));
@@ -116,9 +114,8 @@ export const fetchMonsters = () => async dispatch => {
 export const fetchMaps = () => async dispatch => {
   dispatch(startLoading());
   try {
-    await api.get('/maps').then(res => {
-      dispatch(mapsSuccess(res.data));
-    });
+    const { data } = await api.get(DB_URI);
+    dispatch(mapsSuccess(data.maps));
   } catch (err) {
     console.log('[Error] ' + err.message);
     dispatch(hasError(err.message));
@@ -128,9 +125,8 @@ export const fetchMaps = () => async dispatch => {
 export const fetchItems = () => async dispatch => {
   dispatch(startLoading());
   try {
-    await api.get('/items').then(res => {
-      dispatch(itemsSuccess(res.data));
-    });
+    const { data } = await api.get(DB_URI);
+    dispatch(itemsSuccess(data.items));
   } catch (err) {
     console.log('[Error] ' + err.message);
     dispatch(hasError(err.message));

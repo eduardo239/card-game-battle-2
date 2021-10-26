@@ -146,7 +146,8 @@
       "price": "100",
       "value": "30",
       "image": "/img/items/potion_c_small.png",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "poster": "/assets/items/po-sm-hp.jpg"
     },
     {
       "id": 2,
