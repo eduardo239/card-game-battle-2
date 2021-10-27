@@ -1,11 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleRewardModal } from '../../store/game';
-// import {  } from '../../store/game';
+import {
+  removeEnemy,
+  toggleRewardModal,
+  changeEnemyDown
+} from '../../store/game';
+import { changeHeroDown } from '../../store/user';
 
 const ModalUnknown = () => {
   const dispatch = useDispatch();
 
+  const close = () => {
+    dispatch(toggleRewardModal());
+    dispatch(removeEnemy());
+    dispatch(changeHeroDown(false));
+    dispatch(changeEnemyDown(false));
+  };
   return (
     <section className='page-container'>
       <div className='page mw-700'>
@@ -13,10 +23,7 @@ const ModalUnknown = () => {
         <div className='page-body'>end</div>
       </div>
       <div className='page-buttons'>
-        <button
-          className='btn btn-primary'
-          onClick={() => dispatch(toggleRewardModal())}
-        >
+        <button className='btn btn-primary' onClick={close}>
           ok
         </button>
       </div>

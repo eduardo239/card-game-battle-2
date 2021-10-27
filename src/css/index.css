@@ -367,7 +367,7 @@ hr {
   background-color: #f1f1f1;
   border: 2px solid #333;
   padding: 4px;
-  max-height: 600px;
+  max-height: 500px;
   overflow-y: scroll;
 }
 .positions {

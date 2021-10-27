@@ -9,12 +9,13 @@ const initialState = {
   items: [],
   maps: [],
   map: {},
+  enemy: {},
+  enemyDown: false,
   positions: [],
   position: 0,
   positionType: '',
   dice: 0,
   trickOrTreating: {},
-  enemy: {},
   modal: {
     isSelectingMonster: false,
     isShopping: false,
@@ -61,6 +62,12 @@ export const gameSlice = createSlice({
       state.maps = action.payload;
       state.status.isLoading = false;
     },
+    removeMap: state => {
+      state.map = {};
+    },
+    removeEnemy: state => {
+      state.enemy = {};
+    },
     setRandomNumber: (state, action) => {
       state.dice = action.payload;
     },
@@ -93,8 +100,7 @@ export const gameSlice = createSlice({
       state.modal.isShopping = !state.modal.isShopping;
     },
     toggleSelectMonsterModal: state => {
-      state.modal.isSelectingMonster = false;
-      state.modal.isFighting = true;
+      state.modal.isSelectingMonster = !state.modal.isSelectingMonster;
     },
     toggleUnknownModal: state => {
       state.modal.isUnknown = !state.modal.isUnknown;
@@ -103,6 +109,9 @@ export const gameSlice = createSlice({
       state.enemy =
         state.monsters[Math.floor(Math.random() * state.monsters.length)];
       state.modal.isFighting = true;
+    },
+    closeModal: state => {
+      state.modal.isFighting = false;
     },
     toggleRewardModal: state => {
       state.modal.isReward = !state.modal.isReward;
@@ -114,8 +123,25 @@ export const gameSlice = createSlice({
     },
     enemyMonsterDamage: (state, action) => {
       state.enemy.hp -= action.payload.damage;
+      if (state.enemy.hp <= 0) {
+        state.enemyDown = true;
+        state.enemy = {};
+      }
+    },
+    changeEnemyDown: (state, action) => {
+      state.enemyDown = action.payload;
     },
     restart: state => {
+      state.position = 0;
+      state.dice = 0;
+      state.map = {};
+      state.positions = [];
+      state.positionType = '';
+    },
+    endGame: state => {
+      state.status.isOn = false;
+      state.status.isOver = true;
+      //
       state.position = 0;
       state.dice = 0;
       state.map = {};
@@ -131,6 +157,8 @@ export const {
   monstersSuccess,
   itemsSuccess,
   mapsSuccess,
+  removeMap,
+  removeEnemy,
   startLoading,
   hasError,
   setRandomNumber,
@@ -141,10 +169,13 @@ export const {
   toggleUnknownModal,
   toggleIsFightingModal,
   toggleRewardModal,
+  closeModal,
   addMap,
   generateRandomItem,
   enemyMonsterDamage,
-  restart
+  changeEnemyDown,
+  restart,
+  endGame
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

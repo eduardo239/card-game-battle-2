@@ -10,11 +10,15 @@ import {
 } from '../../store/game';
 import { restart as UR } from '../../store/user';
 import { isEmpty } from '../../util';
+import { ReactComponent as PlIcon } from '../../assets/uil_play.svg';
+import { ReactComponent as SpIcon } from '../../assets/uil_shopping-cart.svg';
+import { ReactComponent as RsIcon } from '../../assets/uil_backward.svg';
 
 const MenuGame = () => {
   const dispatch = useDispatch();
   const [disable, setDisable] = React.useState(false);
   const { map } = useSelector(state => state.game);
+  const { monsters, hero } = useSelector(state => state.user);
 
   const play = () => {
     let time = TIME_DELAY;
@@ -39,23 +43,23 @@ const MenuGame = () => {
       <button
         className='btn btn-primary'
         onClick={() => play()}
-        disabled={disable || isEmpty(map)}
+        disabled={disable || isEmpty(map) || monsters.length === 0}
       >
-        JOGAR
+        JOGAR <PlIcon />
       </button>
       <button
         className='btn btn-secondary'
         disabled={disable}
         onClick={() => dispatch(toggleShopModal())}
       >
-        loja
+        loja <SpIcon />
       </button>
       <button
         className='btn btn-secondary'
         onClick={restarting}
         disabled={disable}
       >
-        reiniciar
+        reiniciar <RsIcon />
       </button>
     </section>
   );

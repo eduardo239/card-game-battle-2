@@ -5,11 +5,12 @@ import {
   toggleSelectMonsterModal
 } from '../../store/game';
 import { addMonsterToFight } from '../../store/user';
+import { isEmpty } from '../../util';
 import CardMonster from '../card/Monster';
 
 const ModalSelectMonster = () => {
   const dispatch = useDispatch();
-  const { monsters } = useSelector(state => state.user);
+  const { monsters, heroMonster } = useSelector(state => state.user);
 
   const select = (monster, i) => {
     dispatch(addMonsterToFight({ monster, i }));
@@ -28,6 +29,7 @@ const ModalSelectMonster = () => {
             <button
               className='btn btn-primary'
               onClick={() => select(monster, i)}
+              disabled={!isEmpty(heroMonster)}
             >
               Selecionar
             </button>
@@ -46,7 +48,11 @@ const ModalSelectMonster = () => {
         </div>
       </div>
       <div className='page-buttons'>
-        <button className='btn btn-primary' onClick={() => next()}>
+        <button
+          className='btn btn-primary'
+          onClick={() => next()}
+          disabled={isEmpty(heroMonster)}
+        >
           fight
         </button>
       </div>

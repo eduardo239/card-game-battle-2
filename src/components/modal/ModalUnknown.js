@@ -26,7 +26,12 @@ const ModalUnknown = () => {
   const accept = () => {
     dispatch(generateRandomItem());
     dispatch(addItem(trickOrTreating));
-    setShowCard(!showCard);
+    setShowCard(true);
+  };
+
+  const close = () => {
+    dispatch(toggleUnknownModal());
+    setShowCard(false);
   };
 
   return (
@@ -54,10 +59,7 @@ const ModalUnknown = () => {
             </button>
           </>
         ) : (
-          <button
-            className='btn btn-secondary'
-            onClick={() => dispatch(toggleUnknownModal())}
-          >
+          <button className='btn btn-secondary' onClick={close}>
             close
           </button>
         )}

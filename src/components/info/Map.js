@@ -5,7 +5,7 @@ import { ReactComponent as CeIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as SzIcon } from '../../assets/uil_arrows-h-alt.svg';
 import { ReactComponent as PoIcon } from '../../assets/uil_flask-potion.svg';
 import { useDispatch } from 'react-redux';
-import { removeMap } from '../../store/user';
+import { removeMap } from '../../store/game';
 
 const Map = ({ data, index }) => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Map = ({ data, index }) => {
         <CeIcon className='icon-bg-light' /> {data?.type}
       </span>
       <span>
-        <PoIcon className='icon-bg-light' /> 99
+        <PoIcon className='icon-bg-light' /> {data?.value}
       </span>
       <button
         className='btn-icon mr-8'

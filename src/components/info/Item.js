@@ -23,7 +23,7 @@ const Item = ({ data, index }) => {
       </span>
 
       <span>
-        <AtIcon className='icon-bg-light' /> 99
+        <AtIcon className='icon-bg-light' /> {data?.value}
       </span>
       <button
         className='btn-icon mr-8'

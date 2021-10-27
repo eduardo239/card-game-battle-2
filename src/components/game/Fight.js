@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { generateRandomHit, isEmpty } from '../../util';
+import { generateRandomNumberInterval, isEmpty } from '../../util';
 import { heroMonsterDamage } from '../../store/user';
-import { enemyMonsterDamage, toggleRewardModal } from '../../store/game';
+import {
+  enemyMonsterDamage,
+  closeModal,
+  toggleRewardModal
+} from '../../store/game';
 import HeroCard from '../card/Hero';
 import MonsterCard from '../card/Monster';
 
 const Fight = () => {
   const dispatch = useDispatch();
-  const { enemy } = useSelector(state => state.game);
-  const { heroMonster } = useSelector(state => state.user);
+  const { enemy, enemyDown } = useSelector(state => state.game);
+  const { heroMonster, heroMonsterDown } = useSelector(state => state.user);
 
   const dead = {
     id: 998,
@@ -24,17 +28,26 @@ const Fight = () => {
     poster: '/assets/cards/mo-dead.jpg'
   };
 
-  React.useEffect(() => {
-    if (enemy.hp <= 0 || heroMonster.hp <= 0) {
-      console.log('end game');
+  const fight = () => {
+    dispatch(
+      heroMonsterDamage({ damage: generateRandomNumberInterval(10, 25) })
+    );
+    dispatch(
+      enemyMonsterDamage({ damage: generateRandomNumberInterval(10, 20) })
+    );
+  };
+
+  useEffect(() => {
+    if (heroMonsterDown) {
+      alert('You lost!');
+      dispatch(closeModal());
+      dispatch(toggleRewardModal());
+    } else if (enemyDown) {
+      alert('You won!');
+      dispatch(closeModal());
       dispatch(toggleRewardModal());
     }
-  }, [enemy, heroMonster, dispatch]);
-
-  const fight = () => {
-    dispatch(heroMonsterDamage({ damage: generateRandomHit(10, 25) }));
-    dispatch(enemyMonsterDamage({ damage: generateRandomHit(10, 20) }));
-  };
+  }, [heroMonsterDown, enemyDown, dispatch]);
 
   return (
     <section className='page-container'>
@@ -65,7 +78,12 @@ const Fight = () => {
           <button className='btn btn-primary' onClick={fight}>
             HIT
           </button>
-          <button className='btn btn-secondary'>Flee</button>
+          <button
+            className='btn btn-secondary'
+            onClick={() => dispatch(closeModal())}
+          >
+            Flee
+          </button>
         </div>
       </div>
     </section>

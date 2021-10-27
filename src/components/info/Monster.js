@@ -19,10 +19,10 @@ const Monster = ({ data, index }) => {
         <CeIcon className='icon-bg-light' /> {data?.type}
       </span>
       <span>
-        <HeIcon className='icon-bg-light' /> 100
+        <HeIcon className='icon-bg-light' /> {data?.hp}
       </span>
       <span>
-        <PoIcon className='icon-bg-light' /> 99
+        <PoIcon className='icon-bg-light' /> {data?.mp}
       </span>
       <button
         className='btn-icon mr-8'
