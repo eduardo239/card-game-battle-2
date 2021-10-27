@@ -8,8 +8,8 @@ import { ReactComponent as BaIcon } from '../../assets/uil_arrow-left.svg';
 import { ReactComponent as NxIcon } from '../../assets/uil_arrow-right.svg';
 
 const Page3 = () => {
-  const { maps } = useSelector(state => state.game);
-  const { map } = useSelector(state => state.user);
+  const { maps, map } = useSelector(state => state.game);
+
   return (
     <section>
       <PageCards title='Select 1 the Map' data={maps} type='maps'>

@@ -18,16 +18,16 @@ const Item = ({ children, data }) => {
             <h5>{data?.name}</h5>
           </div>
           <div>
-            <p>A Wikipédia é um projeto de enciclopédia colaborativa.</p>
+            <p>{data?.description}</p>
           </div>
           <div>
             <span className='card-item'>
               <HpIcon />
-              <span>100</span>
+              <span>???</span>
             </span>
             <span className='card-item'>
               <MpIcon />
-              <span>100</span>
+              <span>???</span>
             </span>
           </div>
           <div>

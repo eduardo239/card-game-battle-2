@@ -20,17 +20,17 @@ const Monster = ({ children, data }) => {
           <div>
             <span className='card-item'>
               <HpIcon />
-              <span>100</span>
+              <span>{data?.hp}</span>
             </span>
             <span className='card-item'>
               <MpIcon />
-              <span>100</span>
+              <span>{data?.mp}</span>
             </span>
           </div>
           <div>
             <span className='card-item'>
               <LvIcon />
-              <span>100</span>
+              <span>{data?.level}</span>
             </span>
             <span className='card-item'>
               <TpIcon />

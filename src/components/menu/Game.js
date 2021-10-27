@@ -1,14 +1,20 @@
 import React from 'react';
 import { TIME_DELAY } from '../../util/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNewPosition, getRandomNumber } from '../../store/game';
-import { toggleShopModal } from '../../store/game';
+import {
+  getNewPosition,
+  toggleShopModal,
+  getRandomNumber,
+  restart as GR,
+  checkPositionType
+} from '../../store/game';
+import { restart as UR } from '../../store/user';
 import { isEmpty } from '../../util';
 
 const MenuGame = () => {
   const dispatch = useDispatch();
   const [disable, setDisable] = React.useState(false);
-  const { map } = useSelector(state => state.user);
+  const { map } = useSelector(state => state.game);
 
   const play = () => {
     let time = TIME_DELAY;
@@ -18,7 +24,14 @@ const MenuGame = () => {
     setTimeout(() => {
       setDisable(false);
       dispatch(getNewPosition());
+
+      dispatch(checkPositionType());
     }, time * 10);
+  };
+
+  const restarting = () => {
+    dispatch(GR());
+    dispatch(UR());
   };
 
   return (
@@ -37,8 +50,12 @@ const MenuGame = () => {
       >
         loja
       </button>
-      <button className='btn btn-secondary' disabled={disable}>
-        sair
+      <button
+        className='btn btn-secondary'
+        onClick={restarting}
+        disabled={disable}
+      >
+        reiniciar
       </button>
     </section>
   );

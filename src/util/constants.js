@@ -1,5 +1,5 @@
 export const TIME_DELAY = 200;
-// export const DB_URI = '../../db/db.json';
+// export const DB_URI = '/assets/db/db.json';
 export const DB_URI =
   'https://eduardo239.github.io/card-game-battle-2/assets/db/db.json';
 

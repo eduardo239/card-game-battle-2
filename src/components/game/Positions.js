@@ -6,8 +6,9 @@ import { ReactComponent as MdIcon } from '../../assets/icon-park-outline_medicin
 import { ReactComponent as BsIcon } from '../../assets/icon-park-outline_toxins.svg';
 
 const Positions = () => {
-  const { positions } = useSelector(state => state.user);
+  const { positions } = useSelector(state => state.game);
   const { position: p } = useSelector(state => state.game);
+  // const { positionType } = useSelector(state => state.game);
 
   return (
     <section className='positions-container'>

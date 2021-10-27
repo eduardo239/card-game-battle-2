@@ -5,7 +5,8 @@ import CardMap from '../card/Map';
 import CardItem from '../card/Item';
 import CardItemShop from '../card/ItemShop';
 import { useDispatch, useSelector } from 'react-redux';
-import { addHero, addItem, addMap, addMonster } from '../../store/user';
+import { addHero, addItem, addMonster } from '../../store/user';
+import { addMap, toggleShopModal } from '../../store/game';
 import {
   POSITION_TYPE1,
   POSITION_TYPE2,
@@ -13,14 +14,14 @@ import {
 } from '../../util/constants';
 import { isEmpty } from '../../util';
 
-const Cards = ({ children, title, data, type }) => {
+const Cards = ({ children, title, data, type, closeButton = false }) => {
   const dispatch = useDispatch();
   const {
     hero: he,
     monsters: ms,
-    map: mp,
     items: it
   } = useSelector(state => state.user);
+  const { map: mp } = useSelector(state => state.game);
 
   const addMapAndGeneratePositions = map => {
     let positions = [];
@@ -127,9 +128,17 @@ const Cards = ({ children, title, data, type }) => {
 
   return (
     <section className='page-container'>
+      {closeButton && (
+        <button
+          className='btn btn-primary absolute-top-right'
+          onClick={() => dispatch(toggleShopModal())}
+        >
+          close
+        </button>
+      )}
       <div className='page'>
         <h4>{title}</h4>
-        <div className='flex gap-10 flex-1'>
+        <div className='page-body'>
           {type === 'heroes' && data?.length > 0 && mapOverHeroes()}
           {type === 'monsters' && data?.length > 0 && mapOverMonsters()}
           {type === 'maps' && data?.length > 0 && mapOverMaps()}

@@ -12,11 +12,7 @@ const Page4 = () => {
 
   return (
     <section>
-      <PageCards
-        title='Select 1 the Item'
-        data={items?.slice(0, 3)} // TODO:
-        type='items'
-      >
+      <PageCards title='Select 1 the Item' data={items} type='items'>
         <div>
           <Link to='/page-3'>
             <button className='btn btn-secondary'>

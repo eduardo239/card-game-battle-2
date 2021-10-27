@@ -20,7 +20,7 @@ const Navigation = () => {
         <Link to='/page-4'>Items</Link>
       </li>
       <li>
-        <Link to='/page-5'>Page Game</Link>
+        <Link to='/page-5'>Game</Link>
       </li>
 
       <li>

@@ -4,9 +4,10 @@ import PageCards from '../game/Cards';
 
 const Page4 = () => {
   const { items } = useSelector(state => state.game);
+
   return (
     <section>
-      <PageCards title='Shop !' data={items} type='shop' closeButton={false} />
+      <PageCards title='Shop !' data={items} type='shop' closeButton={true} />
     </section>
   );
 };

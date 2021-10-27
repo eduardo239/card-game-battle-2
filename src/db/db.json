@@ -219,6 +219,18 @@
       "image": "/img/items/unknown_c_small.png",
       "icon": "fas fa-bomb",
       "poster": "/assets/items/po-md-pz.jpg"
+    },
+    {
+      "id": 999,
+      "name": "Unknown",
+      "description": "???",
+      "rarity": "???",
+      "type": "???",
+      "price": "???",
+      "value": "???",
+      "image": "/img/items/potion_c_small.png",
+      "icon": "fas fa-flask",
+      "poster": "/assets/cards/unknown.jpg"
     }
   ]
 }

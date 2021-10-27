@@ -4,27 +4,33 @@ import { DB_URI, TIME_DELAY } from '../../util/constants';
 
 const initialState = {
   name: 'Game App Battle',
-  map: {},
   heroes: [],
   monsters: [],
   items: [],
   maps: [],
+  map: {},
   positions: [],
   position: 0,
+  positionType: '',
   dice: 0,
-  gift: {},
+  trickOrTreating: {},
+  enemy: {},
+  modal: {
+    isSelectingMonster: false,
+    isShopping: false,
+    isUnknown: false,
+    isUsingItem: false,
+    isFighting: false,
+    isBoss: false,
+    isItem: false,
+    isFightingEnd: false
+  },
   status: {
     isLoading: false,
     isError: false,
-    isFighting: false,
-    isSelectingMonster: false,
-    isBuying: false,
-    isGifting: false,
     isStarted: false,
     isOn: true,
-    isUsingItem: false,
-    isOver: false,
-    isShopModalOpen: false
+    isOver: false
   }
 };
 
@@ -32,10 +38,10 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    startLoading: (state, action) => {
+    startLoading: state => {
       state.status.isLoading = true;
     },
-    hasError: (state, action) => {
+    hasError: state => {
       state.status.isError = true;
       state.status.isLoading = false;
     },
@@ -60,9 +66,65 @@ export const gameSlice = createSlice({
     },
     getNewPosition: state => {
       state.position += state.dice;
+      state.positionType = state.positions[state.position];
+    },
+    checkPositionType: state => {
+      if (state.positionType === 'FIGHT') {
+        state.modal.isSelectingMonster = true;
+      } else if (state.positionType === 'ITEM') {
+        state.modal.isItem = true;
+      } else if (state.positionType === '???') {
+        state.modal.isUnknown = true;
+      } else if (state.positionType === '_') {
+        // NONE: do nothing
+      } else if (state.positionType === 'BOSS') {
+        state.modal.isBoss = true;
+      } else {
+        console.log('else');
+      }
+    },
+    addMap: (state, action) => {
+      state.positions = [];
+      state.positions = action.payload.positions;
+      state.map = {};
+      state.map = action.payload.map;
     },
     toggleShopModal: state => {
-      state.status.isShopModalOpen = !state.status.isShopModalOpen;
+      state.modal.isShopping = !state.modal.isShopping;
+    },
+    toggleSelectMonsterModal: state => {
+      state.modal.isSelectingMonster = !state.modal.isSelectingMonster;
+      state.modal.isFighting = true;
+    },
+    toggleUnknownModal: state => {
+      state.modal.isUnknown = !state.modal.isUnknown;
+    },
+    toggleIsFightingModal: state => {
+      state.modal.isFighting = true;
+      state.enemy =
+        state.monsters[Math.floor(Math.random() * state.monsters.length)];
+    },
+    toggleIFightingModalOff: state => {
+      state.modal.isFighting = false;
+      state.modal.isFightingEnd = true;
+    },
+    toggleIFightingEndModalOff: state => {
+      state.modal.isFightingEnd = false;
+    },
+    generateRandomItem: state => {
+      const randomItem =
+        state.items[Math.floor(Math.random() * state.items.length)];
+      state.trickOrTreating = randomItem;
+    },
+    enemyMonsterDamage: (state, action) => {
+      state.enemy.hp -= action.payload.damage;
+    },
+    restart: state => {
+      state.position = 0;
+      state.dice = 0;
+      state.map = {};
+      state.positions = [];
+      state.positionType = '';
     }
   }
 });
@@ -77,7 +139,17 @@ export const {
   hasError,
   setRandomNumber,
   getNewPosition,
-  toggleShopModal
+  checkPositionType,
+  toggleShopModal,
+  toggleSelectMonsterModal,
+  toggleUnknownModal,
+  toggleIsFightingModal,
+  toggleIFightingModalOff,
+  toggleIFightingEndModalOff,
+  addMap,
+  generateRandomItem,
+  enemyMonsterDamage,
+  restart
 } = gameSlice.actions;
 
 export default gameSlice.reducer;
@@ -101,6 +173,7 @@ export const getRandomNumber = (min, max) => dispatch => {
 export const fetchHeroes = () => async dispatch => {
   dispatch(startLoading());
   try {
+    console.log(DB_URI);
     const { data } = await api.get(DB_URI);
     dispatch(heroSuccess(data.heroes));
   } catch (err) {
@@ -134,7 +207,6 @@ export const fetchMaps = () => async dispatch => {
 export const fetchItems = () => async dispatch => {
   dispatch(startLoading());
   try {
-    console.log(DB_URI);
     const { data } = await api.get(DB_URI);
     dispatch(itemsSuccess(data.items));
   } catch (err) {
