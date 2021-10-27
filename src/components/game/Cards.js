@@ -4,16 +4,23 @@ import CardMonster from '../card/Monster';
 import CardMap from '../card/Map';
 import CardItem from '../card/Item';
 import CardItemShop from '../card/ItemShop';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addHero, addItem, addMap, addMonster } from '../../store/user';
 import {
   POSITION_TYPE1,
   POSITION_TYPE2,
   POSITION_TYPE3
 } from '../../util/constants';
+import { isEmpty } from '../../util';
 
 const Cards = ({ children, title, data, type }) => {
   const dispatch = useDispatch();
+  const {
+    hero: he,
+    monsters: ms,
+    map: mp,
+    items: it
+  } = useSelector(state => state.user);
 
   const addMapAndGeneratePositions = map => {
     let positions = [];
@@ -42,6 +49,7 @@ const Cards = ({ children, title, data, type }) => {
             <button
               className='btn btn-primary'
               onClick={() => dispatch(addHero(hero))}
+              disabled={!isEmpty(he)}
             >
               Selecionar
             </button>
@@ -59,6 +67,7 @@ const Cards = ({ children, title, data, type }) => {
             <button
               className='btn btn-primary'
               onClick={() => dispatch(addMonster(monster))}
+              disabled={ms.length >= 3}
             >
               Selecionar
             </button>
@@ -76,6 +85,7 @@ const Cards = ({ children, title, data, type }) => {
             <button
               className='btn btn-primary'
               onClick={() => addMapAndGeneratePositions(map)}
+              disabled={!isEmpty(mp)}
             >
               Selecionar
             </button>
@@ -93,6 +103,7 @@ const Cards = ({ children, title, data, type }) => {
             <button
               className='btn btn-primary'
               onClick={() => dispatch(addItem(item, i))}
+              disabled={it.length >= 1}
             >
               Selecionar
             </button>

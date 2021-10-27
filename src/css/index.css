@@ -328,8 +328,9 @@ hr {
   display: flex;
   flex-direction: column;
 }
+
 .page-container {
-  margin-bottom: 22px;
+  padding-bottom: calc(1rem + 22px);
 }
 .page-buttons {
   position: absolute;
