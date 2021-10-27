@@ -23,7 +23,7 @@ const initialState = {
     isFighting: false,
     isBoss: false,
     isItem: false,
-    isFightingEnd: false
+    isReward: false
   },
   status: {
     isLoading: false,
@@ -93,23 +93,19 @@ export const gameSlice = createSlice({
       state.modal.isShopping = !state.modal.isShopping;
     },
     toggleSelectMonsterModal: state => {
-      state.modal.isSelectingMonster = !state.modal.isSelectingMonster;
+      state.modal.isSelectingMonster = false;
       state.modal.isFighting = true;
     },
     toggleUnknownModal: state => {
       state.modal.isUnknown = !state.modal.isUnknown;
     },
     toggleIsFightingModal: state => {
-      state.modal.isFighting = true;
       state.enemy =
         state.monsters[Math.floor(Math.random() * state.monsters.length)];
+      state.modal.isFighting = true;
     },
-    toggleIFightingModalOff: state => {
-      state.modal.isFighting = false;
-      state.modal.isFightingEnd = true;
-    },
-    toggleIFightingEndModalOff: state => {
-      state.modal.isFightingEnd = false;
+    toggleRewardModal: state => {
+      state.modal.isReward = !state.modal.isReward;
     },
     generateRandomItem: state => {
       const randomItem =
@@ -144,8 +140,7 @@ export const {
   toggleSelectMonsterModal,
   toggleUnknownModal,
   toggleIsFightingModal,
-  toggleIFightingModalOff,
-  toggleIFightingEndModalOff,
+  toggleRewardModal,
   addMap,
   generateRandomItem,
   enemyMonsterDamage,

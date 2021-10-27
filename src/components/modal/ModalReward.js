@@ -1,9 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  toggleUnknownModal,
-  toggleIFightingEndModalOff
-} from '../../store/game';
+import { toggleRewardModal } from '../../store/game';
+// import {  } from '../../store/game';
 
 const ModalUnknown = () => {
   const dispatch = useDispatch();
@@ -17,7 +15,7 @@ const ModalUnknown = () => {
       <div className='page-buttons'>
         <button
           className='btn btn-primary'
-          onClick={() => dispatch(toggleIFightingEndModalOff())}
+          onClick={() => dispatch(toggleRewardModal())}
         >
           ok
         </button>

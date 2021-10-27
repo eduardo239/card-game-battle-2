@@ -7,18 +7,13 @@ import Modal from '../modal/Modal';
 import Alert from '../messages/Alert';
 import ModalShop from '../modal/ModalShop';
 import ModalFight from '../modal/ModalFight';
-import ModalFightEnd from '../modal/ModalFightEnd';
+import ModalReward from '../modal/ModalReward';
 import ModalSelectMonster from '../modal/ModalSelectMonster';
 import ModalUnknown from '../modal/ModalUnknown';
 
 const PageGame = () => {
-  const {
-    isSelectingMonster,
-    isShopping,
-    isUnknown,
-    isFighting,
-    isFightingEnd
-  } = useSelector(state => state.game.modal);
+  const { isSelectingMonster, isShopping, isUnknown, isFighting, isReward } =
+    useSelector(state => state.game.modal);
 
   return (
     <section className='flex flex-column'>
@@ -34,8 +29,8 @@ const PageGame = () => {
       <Modal show={isFighting}>
         <ModalFight />
       </Modal>
-      <Modal show={isFightingEnd}>
-        <ModalFightEnd />
+      <Modal show={isReward}>
+        <ModalReward />
       </Modal>
       <Modal show={isUnknown}>
         <ModalUnknown />

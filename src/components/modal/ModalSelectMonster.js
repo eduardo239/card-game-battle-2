@@ -14,6 +14,7 @@ const ModalSelectMonster = () => {
   const select = (monster, i) => {
     dispatch(addMonsterToFight({ monster, i }));
   };
+
   const next = () => {
     dispatch(toggleSelectMonsterModal());
     dispatch(toggleIsFightingModal());
