@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/card-game-battle-2/static/css/main.6ff73f26.chunk.css",
-    "main.js": "/card-game-battle-2/static/js/main.f6044c26.chunk.js",
-    "main.js.map": "/card-game-battle-2/static/js/main.f6044c26.chunk.js.map",
+    "main.js": "/card-game-battle-2/static/js/main.0aa4d3f9.chunk.js",
+    "main.js.map": "/card-game-battle-2/static/js/main.0aa4d3f9.chunk.js.map",
     "runtime-main.js": "/card-game-battle-2/static/js/runtime-main.1368b703.js",
     "runtime-main.js.map": "/card-game-battle-2/static/js/runtime-main.1368b703.js.map",
-    "static/js/2.4f4c7fc3.chunk.js": "/card-game-battle-2/static/js/2.4f4c7fc3.chunk.js",
-    "static/js/2.4f4c7fc3.chunk.js.map": "/card-game-battle-2/static/js/2.4f4c7fc3.chunk.js.map",
+    "static/js/2.99efb40c.chunk.js": "/card-game-battle-2/static/js/2.99efb40c.chunk.js",
+    "static/js/2.99efb40c.chunk.js.map": "/card-game-battle-2/static/js/2.99efb40c.chunk.js.map",
     "index.html": "/card-game-battle-2/index.html",
     "static/css/main.6ff73f26.chunk.css.map": "/card-game-battle-2/static/css/main.6ff73f26.chunk.css.map",
-    "static/js/2.4f4c7fc3.chunk.js.LICENSE.txt": "/card-game-battle-2/static/js/2.4f4c7fc3.chunk.js.LICENSE.txt",
+    "static/js/2.99efb40c.chunk.js.LICENSE.txt": "/card-game-battle-2/static/js/2.99efb40c.chunk.js.LICENSE.txt",
     "static/media/icon-park-outline_ghost.cd752022.svg": "/card-game-battle-2/static/media/icon-park-outline_ghost.cd752022.svg",
     "static/media/icon-park-outline_gift.ee0b503d.svg": "/card-game-battle-2/static/media/icon-park-outline_gift.ee0b503d.svg",
     "static/media/icon-park-outline_medicine-bottle.f5df450e.svg": "/card-game-battle-2/static/media/icon-park-outline_medicine-bottle.f5df450e.svg",
@@ -32,6 +32,7 @@
     "static/media/uil_flask-potion.b3e94b48.svg": "/card-game-battle-2/static/media/uil_flask-potion.b3e94b48.svg",
     "static/media/uil_flask.2631f010.svg": "/card-game-battle-2/static/media/uil_flask.2631f010.svg",
     "static/media/uil_heart-sign.cbcd2094.svg": "/card-game-battle-2/static/media/uil_heart-sign.cbcd2094.svg",
+    "static/media/uil_money-bill.b6f7629a.svg": "/card-game-battle-2/static/media/uil_money-bill.b6f7629a.svg",
     "static/media/uil_play.abeb920b.svg": "/card-game-battle-2/static/media/uil_play.abeb920b.svg",
     "static/media/uil_pricetag-alt.d857ca4c.svg": "/card-game-battle-2/static/media/uil_pricetag-alt.d857ca4c.svg",
     "static/media/uil_robot.eeb252fe.svg": "/card-game-battle-2/static/media/uil_robot.eeb252fe.svg",
@@ -41,8 +42,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1368b703.js",
-    "static/js/2.4f4c7fc3.chunk.js",
+    "static/js/2.99efb40c.chunk.js",
     "static/css/main.6ff73f26.chunk.css",
-    "static/js/main.f6044c26.chunk.js"
+    "static/js/main.0aa4d3f9.chunk.js"
   ]
 }
