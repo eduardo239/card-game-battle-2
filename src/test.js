@@ -6,3 +6,51 @@ let int = setInterval(() => {
   }
   end++;
 }, 600);
+
+// function takes 2 arguments: an object literal obj and a string
+// prop
+// return a new object literal with the same properties as obj
+// excluding the property prop named prop, if it exists
+function omit(obj, prop) {
+  var newObj = {};
+  for (var key in obj) {
+    if (key !== prop) {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+
+// function takes a single parameter k and returns a new object,
+// representing a step counter with the initial value of 0 and with
+// three methods:
+// - increment() increments the value by k
+// - decrement() decrements the value by k
+// - getValue() returns the current value
+
+const counter = (function counter() {
+  let value = 0;
+  return {
+    getValue: function () {
+      return value;
+    },
+    changeBy: function (k) {
+      value += k;
+    }
+  };
+})();
+
+function getFixedCounter(k) {
+  var myCounter = counter;
+  return {
+    increment: function () {
+      myCounter.changeBy(k);
+    },
+    decrement: function () {
+      myCounter.changeBy(-k);
+    },
+    getValue: function () {
+      return myCounter.getValue();
+    }
+  };
+}

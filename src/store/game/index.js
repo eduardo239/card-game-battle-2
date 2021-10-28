@@ -5,6 +5,10 @@ import { DB_URI, TIME_DELAY } from '../../util/constants';
 const initialState = {
   name: 'Game App Battle',
   heroes: [],
+  hero: {
+    won: false,
+    gold: 0
+  },
   monsters: [],
   items: [],
   maps: [],
@@ -15,7 +19,7 @@ const initialState = {
   position: 0,
   positionType: '',
   dice: 0,
-  trickOrTreating: {},
+  gift: {},
   modal: {
     isSelectingMonster: false,
     isShopping: false,
@@ -110,17 +114,32 @@ export const gameSlice = createSlice({
         state.monsters[Math.floor(Math.random() * state.monsters.length)];
       state.modal.isFighting = true;
     },
-    closeModal: state => {
+    closeFightingModal: state => {
       state.modal.isFighting = false;
+      state.enemy = {};
     },
-    toggleRewardModal: state => {
+    toggleRewardModal: (state, action) => {
       state.modal.isReward = !state.modal.isReward;
+      if (action.payload.won === true) {
+        state.hero.won = true;
+        state.hero.gold += action.payload.gold;
+      } else {
+        state.hero.won = false;
+      }
+    },
+    closeRewardModal: state => {
+      state.modal.isReward = false;
+      state.modal.isItem = false;
+      state.hero.won = false;
+      state.hero.gold = 0;
+
+      state.gift = {};
     },
     generateRandomItem: state => {
-      const randomItem =
-        state.items[Math.floor(Math.random() * state.items.length)];
-      state.trickOrTreating = randomItem;
+      let r = state.items[Math.floor(Math.random() * state.items.length)];
+      state.gift = r;
     },
+
     enemyMonsterDamage: (state, action) => {
       state.enemy.hp -= action.payload.damage;
       if (state.enemy.hp <= 0) {
@@ -169,9 +188,11 @@ export const {
   toggleUnknownModal,
   toggleIsFightingModal,
   toggleRewardModal,
-  closeModal,
+  closeRewardModal,
+  closeFightingModal,
   addMap,
   generateRandomItem,
+
   enemyMonsterDamage,
   changeEnemyDown,
   restart,

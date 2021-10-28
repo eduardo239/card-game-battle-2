@@ -4,11 +4,13 @@ import { ReactComponent as UsIcon } from '../../assets/uil_user.svg';
 import { ReactComponent as CeIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as HeIcon } from '../../assets/uil_heart-sign.svg';
 import { ReactComponent as PoIcon } from '../../assets/uil_flask-potion.svg';
-import { useDispatch } from 'react-redux';
+import { ReactComponent as GoIcon } from '../../assets/uil_money-bill.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeHero } from '../../store/user';
 
 const Hero = ({ data }) => {
   const dispatch = useDispatch();
+  const { gold } = useSelector(state => state.user);
 
   return (
     <section className='list-item'>
@@ -23,6 +25,9 @@ const Hero = ({ data }) => {
       </span>
       <span>
         <PoIcon className='icon-bg-light' /> {data?.mp}
+      </span>
+      <span>
+        <GoIcon className='icon-bg-light' /> {gold ? gold : 0}
       </span>
       <button className='btn-icon mr-8' onClick={() => dispatch(removeHero())}>
         <TiIcon />

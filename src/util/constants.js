@@ -22,16 +22,16 @@ export const POSITION_TYPE2 = [
   'ITEM',
   'TRAP'
 ];
-// export const POSITION_TYPE3 = [
-//   '_',
-//   'FIGHT',
-//   'FIGHT',
-//   'FIGHT',
-//   'FIGHT',
-//   'FIGHT',
-//   '???',
-//   'ITEM',
-//   'TRAP'
-// ];
+export const POSITION_TYPE9 = [
+  '_',
+  'FIGHT',
+  'FIGHT',
+  'FIGHT',
+  'FIGHT',
+  'FIGHT',
+  '???',
+  'ITEM',
+  'TRAP'
+];
 
-export const POSITION_TYPE3 = ['FIGHT'];
+export const POSITION_TYPE3 = ['ITEM', '???'];

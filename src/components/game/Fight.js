@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { generateRandomNumberInterval, isEmpty } from '../../util';
-import { heroMonsterDamage } from '../../store/user';
+import { heroMonsterDamage, addGold } from '../../store/user';
 import {
   enemyMonsterDamage,
-  closeModal,
+  closeFightingModal,
   toggleRewardModal
 } from '../../store/game';
 import HeroCard from '../card/Hero';
@@ -13,7 +13,11 @@ import MonsterCard from '../card/Monster';
 const Fight = () => {
   const dispatch = useDispatch();
   const { enemy, enemyDown } = useSelector(state => state.game);
-  const { heroMonster, heroMonsterDown } = useSelector(state => state.user);
+  const { monsters, heroMonsterIndex, heroMonsterDown } = useSelector(
+    state => state.user
+  );
+
+  const { gold } = useSelector(state => state.game.hero);
 
   const dead = {
     id: 998,
@@ -30,22 +34,24 @@ const Fight = () => {
 
   const fight = () => {
     dispatch(
-      heroMonsterDamage({ damage: generateRandomNumberInterval(10, 25) })
+      heroMonsterDamage({ damage: generateRandomNumberInterval(5, 10) })
     );
     dispatch(
-      enemyMonsterDamage({ damage: generateRandomNumberInterval(10, 20) })
+      enemyMonsterDamage({ damage: generateRandomNumberInterval(50, 95) })
     );
   };
 
   useEffect(() => {
     if (heroMonsterDown) {
       alert('You lost!');
-      dispatch(closeModal());
-      dispatch(toggleRewardModal());
+      dispatch(closeFightingModal());
+      dispatch(toggleRewardModal({ won: false, gold: 0 }));
     } else if (enemyDown) {
       alert('You won!');
-      dispatch(closeModal());
-      dispatch(toggleRewardModal());
+      dispatch(closeFightingModal());
+      const gold = generateRandomNumberInterval(30, 60);
+      dispatch(toggleRewardModal({ won: true, gold }));
+      dispatch(addGold(gold));
     }
   }, [heroMonsterDown, enemyDown, dispatch]);
 
@@ -55,8 +61,8 @@ const Fight = () => {
         <h4>Título da Página</h4>
 
         <div className='flex flex-space-between gap-10 flex-1'>
-          {!isEmpty(heroMonster) ? (
-            <HeroCard data={heroMonster} />
+          {!isEmpty(monsters[heroMonsterIndex]) ? (
+            <HeroCard data={monsters[heroMonsterIndex]} />
           ) : (
             <HeroCard data={dead} />
           )}
@@ -80,7 +86,7 @@ const Fight = () => {
           </button>
           <button
             className='btn btn-secondary'
-            onClick={() => dispatch(closeModal())}
+            onClick={() => dispatch(closeFightingModal())}
           >
             Flee
           </button>

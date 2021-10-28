@@ -13,7 +13,7 @@ const Item = ({ data, index }) => {
   return (
     <section className='list-item'>
       <span>
-        <FlIcon className='icon-bg-light' /> {data?.name})
+        <FlIcon className='icon-bg-light' /> {data?.name}
       </span>
       <span>
         <DoIcon className='icon-bg-light' /> {data?.description}

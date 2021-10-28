@@ -1,17 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   removeEnemy,
-  toggleRewardModal,
+  closeRewardModal,
   changeEnemyDown
 } from '../../store/game';
 import { changeHeroDown } from '../../store/user';
 
 const ModalUnknown = () => {
   const dispatch = useDispatch();
+  const { won, gold } = useSelector(state => state.game.hero);
 
   const close = () => {
-    dispatch(toggleRewardModal());
+    dispatch(closeRewardModal());
     dispatch(removeEnemy());
     dispatch(changeHeroDown(false));
     dispatch(changeEnemyDown(false));
@@ -19,7 +20,8 @@ const ModalUnknown = () => {
   return (
     <section className='page-container'>
       <div className='page mw-700'>
-        <h4>end ...</h4>
+        <h4>end ...{won ? 'won' : 'lost'} </h4>
+        <p>{gold ? `You got ${gold} gold` : 'You got nothing'}</p>
         <div className='page-body'>end</div>
       </div>
       <div className='page-buttons'>

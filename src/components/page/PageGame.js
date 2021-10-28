@@ -10,16 +10,27 @@ import ModalFight from '../modal/ModalFight';
 import ModalReward from '../modal/ModalReward';
 import ModalSelectMonster from '../modal/ModalSelectMonster';
 import ModalUnknown from '../modal/ModalUnknown';
+import ModalItem from '../modal/ModalItem';
 import InfoItem from '../info/Item';
 import InfoMonster from '../info/Monster';
+import InfoHero from '../info/Hero';
+import InfoMap from '../info/Map';
 import { endGame } from '../../store/game';
+import { isEmpty } from '../../util';
 
 const PageGame = () => {
   const dispatch = useDispatch();
-  const { isSelectingMonster, isShopping, isUnknown, isFighting, isReward } =
-    useSelector(state => state.game.modal);
-  const { items, monsters } = useSelector(state => state.user);
-
+  const {
+    isSelectingMonster,
+    isShopping,
+    isUnknown,
+    isFighting,
+    isReward,
+    isItem
+  } = useSelector(state => state.game.modal);
+  const { items, monsters, hero } = useSelector(state => state.user);
+  const { map } = useSelector(state => state.game);
+  console.log(items);
   return (
     <section className='flex flex-column'>
       <MenuGame />
@@ -37,11 +48,16 @@ const PageGame = () => {
       <Modal show={isReward}>
         <ModalReward />
       </Modal>
+      <Modal show={isItem}>
+        <ModalItem />
+      </Modal>
       <Modal show={isUnknown}>
         <ModalUnknown />
       </Modal>
       {/*  */}
       <div className='flex flex-column'>
+        {!isEmpty(hero) ? <InfoHero data={hero} /> : null}
+
         {items.length > 0
           ? items.map((item, i) => <InfoItem key={i} data={item} index={i} />)
           : null}
@@ -51,6 +67,8 @@ const PageGame = () => {
               <InfoMonster key={i} data={monster} index={i} />
             ))
           : null}
+
+        {!isEmpty(map) ? <InfoMap data={map} /> : null}
       </div>
 
       {/*  */}

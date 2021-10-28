@@ -6,7 +6,6 @@ const initialState = {
   items: [],
   monsters: [],
   gold: 0,
-  heroMonster: {},
   heroMonsterDown: false,
   heroMonsterIndex: null,
   isGameOver: false
@@ -29,26 +28,25 @@ export const userSlice = createSlice({
       state.monsters = state.monsters.filter((m, i) => i !== action.payload);
     },
     addItem: (state, action) => {
+      console.log(action.payload);
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
       state.items = state.items.filter((m, i) => i !== action.payload);
     },
     addGold: (state, action) => {
-      state.gold += action.payload;
+      state.gold += parseInt(action.payload);
     },
     removeGold: (state, action) => {
       state.gold -= action.payload;
     },
     addMonsterToFight: (state, action) => {
-      state.heroMonster = action.payload.monster;
-      state.heroMonsterIndex = action.payload.i;
+      state.heroMonsterIndex = action.payload;
     },
     heroMonsterDamage: (state, action) => {
-      state.heroMonster.hp -= action.payload.damage;
-      if (state.heroMonster.hp <= 0) {
+      state.monsters[state.heroMonsterIndex].hp -= action.payload.damage;
+      if (state.monsters[state.heroMonsterIndex].hp <= 0) {
         state.heroMonsterDown = true;
-        state.heroMonster = {};
         state.monsters.splice(state.heroMonsterIndex, 1);
       }
       if (state.monsters.length === 0) {
@@ -64,7 +62,6 @@ export const userSlice = createSlice({
       state.items = [];
       state.monsters = [];
       state.gold = 0;
-      state.heroMonster = {};
     }
   }
 });
@@ -74,6 +71,7 @@ export const {
   addMonster,
   addItem,
   addMap,
+  addGold,
   removeHero,
   removeMonster,
   removeItem,

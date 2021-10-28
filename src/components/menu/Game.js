@@ -18,7 +18,7 @@ const MenuGame = () => {
   const dispatch = useDispatch();
   const [disable, setDisable] = React.useState(false);
   const { map } = useSelector(state => state.game);
-  const { monsters, hero } = useSelector(state => state.user);
+  const { monsters } = useSelector(state => state.user);
 
   const play = () => {
     let time = TIME_DELAY;

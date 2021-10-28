@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactComponent as TiIcon } from '../../assets/uil_times.svg';
-import { ReactComponent as MoIcon } from '../../assets/uil_robot.svg';
+import { ReactComponent as MpIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as CeIcon } from '../../assets/uil_cell.svg';
 import { ReactComponent as SzIcon } from '../../assets/uil_arrows-h-alt.svg';
 import { ReactComponent as PoIcon } from '../../assets/uil_flask-potion.svg';
@@ -13,7 +13,7 @@ const Map = ({ data, index }) => {
   return (
     <section className='list-item'>
       <span>
-        <MoIcon className='icon-bg-light' /> {data?.name}
+        <MpIcon className='icon-bg-light' /> {data?.name}
       </span>
 
       <span>
