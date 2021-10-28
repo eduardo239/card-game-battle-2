@@ -1,58 +1,61 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
+// game
 import Dice from '../game/Dice';
 import Positions from '../game/Positions';
 import MenuGame from '../menu/Game';
+// modal
 import Modal from '../modal/Modal';
-import Alert from '../messages/Alert';
 import ModalShop from '../modal/ModalShop';
-import ModalFight from '../modal/ModalFight';
-import ModalReward from '../modal/ModalReward';
-import ModalSelectMonster from '../modal/ModalSelectMonster';
-import ModalUnknown from '../modal/ModalUnknown';
-import ModalItem from '../modal/ModalItem';
+// position type
+import Alert from '../messages/Alert';
+import Fight from '../game/Fight';
+import SelectMonster from '../game/SelectMonster';
+import Item from '../game/Item';
+// info
 import InfoItem from '../info/Item';
 import InfoMonster from '../info/Monster';
 import InfoHero from '../info/Hero';
 import InfoMap from '../info/Map';
-import { endGame } from '../../store/game';
+// util
 import { isEmpty } from '../../util';
 
 const PageGame = () => {
-  const dispatch = useDispatch();
   const {
     isSelectingMonster,
     isShopping,
-    isUnknown,
     isFighting,
+    isUnknown,
     isReward,
     isItem
   } = useSelector(state => state.game.modal);
   const { items, monsters, hero } = useSelector(state => state.user);
   const { map } = useSelector(state => state.game);
-  console.log(items);
+
   return (
-    <section className='flex flex-column'>
+    <section className='page-2'>
       <MenuGame />
-      <Dice />
+      <div className='flex'>
+        <Dice />
+      </div>
       <Positions />
       <Modal show={isShopping}>
         <ModalShop />
       </Modal>
       <Modal show={isSelectingMonster}>
-        <ModalSelectMonster />
+        <SelectMonster />
       </Modal>
       <Modal show={isFighting}>
-        <ModalFight />
+        <Fight />
       </Modal>
       <Modal show={isReward}>
-        <ModalReward />
+        <Item type='reward' />
       </Modal>
       <Modal show={isItem}>
-        <ModalItem />
+        <Item type='item' />
       </Modal>
       <Modal show={isUnknown}>
-        <ModalUnknown />
+        <Item type='unknown' />
       </Modal>
       {/*  */}
       <div className='flex flex-column'>

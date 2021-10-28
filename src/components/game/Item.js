@@ -1,43 +1,31 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { generateRandomItem, toggleUnknownModal } from '../../store/game';
+import { closeItemModal } from '../../store/game';
 import CardItem from '../card/Item';
 import { isEmpty } from '../../util';
 import { addItem } from '../../store/user';
-const ModalUnknown = () => {
+import { unknown } from '../../util/constants';
+
+const ModalUnknown = ({ type }) => {
   const dispatch = useDispatch();
   const { gift } = useSelector(state => state.game);
-
   const [showCard, setShowCard] = useState(false);
 
-  const unknown = {
-    id: 999,
-    name: 'Unknown',
-    description: '???',
-    rarity: '???',
-    type: '???',
-    price: '???',
-    value: '???',
-    image: '/img/items/potion_c_small.png',
-    icon: 'fas fa-flask',
-    poster: '/assets/cards/unknown.jpg'
-  };
-
   const accept = () => {
-    dispatch(generateRandomItem());
-    if (gift) dispatch(addItem(gift));
+    dispatch(addItem(gift));
     setShowCard(true);
   };
 
   const close = () => {
-    dispatch(toggleUnknownModal());
+    dispatch(closeItemModal());
     setShowCard(false);
   };
 
   return (
     <section className='page-container'>
       <div className='page'>
-        <h4>trick-or-treating ???</h4>
+        <h4>gift-or-gift ???</h4>
+        {type}
         <div className='page-body'>
           {!showCard && <CardItem data={unknown} />}
           {showCard && !isEmpty(gift) && <CardItem data={gift} />}
@@ -48,7 +36,7 @@ const ModalUnknown = () => {
           <>
             <button
               className='btn btn-secondary'
-              onClick={() => dispatch(toggleUnknownModal())}
+              // onClick={() => dispatch(closeRewardModal())}
             >
               cancel
             </button>

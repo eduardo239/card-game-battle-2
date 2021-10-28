@@ -12,7 +12,7 @@ const Page1 = () => {
   const { hero } = useSelector(state => state.user);
 
   return (
-    <section>
+    <section className='page-2'>
       <PageCards title='Select 1 the Hero' data={heroes} type='heroes'>
         <div>
           <Link to='/'>

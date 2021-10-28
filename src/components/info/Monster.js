@@ -13,7 +13,7 @@ const Monster = ({ data, index }) => {
   return (
     <section className='list-item'>
       <span>
-        <MoIcon className='icon-bg-light' /> {data?.name}
+        <MoIcon className='icon-bg-light' />[{index}] {data?.name}
       </span>
       <span>
         <CeIcon className='icon-bg-light' /> {data?.type}

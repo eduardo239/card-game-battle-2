@@ -14,19 +14,21 @@ const initialState = {
   maps: [],
   map: {},
   enemy: {},
-  enemyDown: false,
+  enemyMonsterDown: false,
+  heroMonsterDown: false,
   positions: [],
   position: 0,
   positionType: '',
   dice: 0,
   gift: {},
   modal: {
-    isSelectingMonster: false,
     isShopping: false,
-    isUnknown: false,
+    isSelectingMonster: false,
     isUsingItem: false,
     isFighting: false,
     isBoss: false,
+    // items
+    isUnknown: false,
     isItem: false,
     isReward: false
   },
@@ -84,6 +86,9 @@ export const gameSlice = createSlice({
         state.modal.isSelectingMonster = true;
       } else if (state.positionType === 'ITEM') {
         state.modal.isItem = true;
+        // generate random item
+        let r = state.items[Math.floor(Math.random() * state.items.length)];
+        state.gift = r;
       } else if (state.positionType === '???') {
         state.modal.isUnknown = true;
       } else if (state.positionType === '_') {
@@ -106,50 +111,44 @@ export const gameSlice = createSlice({
     toggleSelectMonsterModal: state => {
       state.modal.isSelectingMonster = !state.modal.isSelectingMonster;
     },
-    toggleUnknownModal: state => {
-      state.modal.isUnknown = !state.modal.isUnknown;
+    closeItemModal: state => {
+      state.modal.isItem = false;
+      state.modal.isUnknown = false;
+      state.modal.isReward = false;
     },
-    toggleIsFightingModal: state => {
+    openFightingModal: state => {
       state.enemy =
         state.monsters[Math.floor(Math.random() * state.monsters.length)];
       state.modal.isFighting = true;
     },
     closeFightingModal: state => {
       state.modal.isFighting = false;
+      // state.modal.isReward  = false;
+      state.enemyMonsterDown = false;
+      state.heroMonsterDown = false;
       state.enemy = {};
-    },
-    toggleRewardModal: (state, action) => {
-      state.modal.isReward = !state.modal.isReward;
-      if (action.payload.won === true) {
-        state.hero.won = true;
-        state.hero.gold += action.payload.gold;
-      } else {
-        state.hero.won = false;
-      }
-    },
-    closeRewardModal: state => {
-      state.modal.isReward = false;
-      state.modal.isItem = false;
-      state.hero.won = false;
-      state.hero.gold = 0;
 
-      state.gift = {};
+      let r = state.items[Math.floor(Math.random() * state.items.length)];
+      state.gift = r;
+      state.modal.isReward = true;
     },
     generateRandomItem: state => {
       let r = state.items[Math.floor(Math.random() * state.items.length)];
       state.gift = r;
     },
-
+    getPrize: (state, action) => {
+      if (action.payload.won) {
+        state.hero.gold += action.payload.gold;
+      }
+    },
     enemyMonsterDamage: (state, action) => {
       state.enemy.hp -= action.payload.damage;
       if (state.enemy.hp <= 0) {
-        state.enemyDown = true;
+        state.enemyMonsterDown = true;
         state.enemy = {};
       }
     },
-    changeEnemyDown: (state, action) => {
-      state.enemyDown = action.payload;
-    },
+
     restart: state => {
       state.position = 0;
       state.dice = 0;
@@ -182,19 +181,16 @@ export const {
   hasError,
   setRandomNumber,
   getNewPosition,
+  getPrize,
   checkPositionType,
   toggleShopModal,
   toggleSelectMonsterModal,
-  toggleUnknownModal,
-  toggleIsFightingModal,
-  toggleRewardModal,
-  closeRewardModal,
+  openFightingModal,
   closeFightingModal,
+  closeItemModal,
   addMap,
   generateRandomItem,
-
   enemyMonsterDamage,
-  changeEnemyDown,
   restart,
   endGame
 } = gameSlice.actions;

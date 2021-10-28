@@ -1,9 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleIsFightingModal,
-  toggleSelectMonsterModal
-} from '../../store/game';
+import { openFightingModal, toggleSelectMonsterModal } from '../../store/game';
 import { addMonsterToFight } from '../../store/user';
 import CardMonster from '../card/Monster';
 
@@ -17,7 +14,7 @@ const ModalSelectMonster = () => {
 
   const next = () => {
     dispatch(toggleSelectMonsterModal());
-    dispatch(toggleIsFightingModal());
+    dispatch(openFightingModal());
   };
 
   const mapOverMonsters = () => {

@@ -1,59 +1,39 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { generateRandomNumberInterval, isEmpty } from '../../util';
+import { randomNumberInterval, isEmpty } from '../../util';
 import { heroMonsterDamage, addGold } from '../../store/user';
 import {
   enemyMonsterDamage,
   closeFightingModal,
-  toggleRewardModal
+  getPrize
 } from '../../store/game';
 import HeroCard from '../card/Hero';
 import MonsterCard from '../card/Monster';
+import { unknown } from '../../util/constants';
 
 const Fight = () => {
   const dispatch = useDispatch();
-  const { enemy, enemyDown } = useSelector(state => state.game);
-  const { monsters, heroMonsterIndex, heroMonsterDown } = useSelector(
-    state => state.user
+  const { enemy, enemyMonsterDown, heroMonsterDown } = useSelector(
+    state => state.game
   );
-
-  const { gold } = useSelector(state => state.game.hero);
-
-  const dead = {
-    id: 998,
-    name: 'dead',
-    description: 'x_x',
-    rarity: 'x_x',
-    type: 'x_x',
-    price: 'x_x',
-    value: 'x_x',
-    image: '/img/items/potion_c_small.png',
-    icon: 'fas fa-flask',
-    poster: '/assets/cards/mo-dead.jpg'
-  };
+  const { monsters, heroMonsterIndex } = useSelector(state => state.user);
 
   const fight = () => {
-    dispatch(
-      heroMonsterDamage({ damage: generateRandomNumberInterval(5, 10) })
-    );
-    dispatch(
-      enemyMonsterDamage({ damage: generateRandomNumberInterval(50, 95) })
-    );
+    dispatch(heroMonsterDamage({ damage: randomNumberInterval(5, 10) }));
+    dispatch(enemyMonsterDamage({ damage: randomNumberInterval(50, 95) }));
   };
 
   useEffect(() => {
     if (heroMonsterDown) {
-      alert('You lost!');
       dispatch(closeFightingModal());
-      dispatch(toggleRewardModal({ won: false, gold: 0 }));
-    } else if (enemyDown) {
-      alert('You won!');
+      dispatch(getPrize({ won: false, gold: 0 }));
+    } else if (enemyMonsterDown) {
       dispatch(closeFightingModal());
-      const gold = generateRandomNumberInterval(30, 60);
-      dispatch(toggleRewardModal({ won: true, gold }));
+      const gold = randomNumberInterval(30, 60);
+      dispatch(getPrize({ won: true, gold }));
       dispatch(addGold(gold));
     }
-  }, [heroMonsterDown, enemyDown, dispatch]);
+  }, [heroMonsterDown, enemyMonsterDown, dispatch]);
 
   return (
     <section className='page-container'>
@@ -64,17 +44,13 @@ const Fight = () => {
           {!isEmpty(monsters[heroMonsterIndex]) ? (
             <HeroCard data={monsters[heroMonsterIndex]} />
           ) : (
-            <HeroCard data={dead} />
+            <HeroCard data={unknown} />
           )}
-          hero
-          <div className='flex-center-center'>
-            <h1>VS</h1>
-          </div>
-          enemy
+          vs
           {!isEmpty(enemy) ? (
             <MonsterCard data={enemy} />
           ) : (
-            <MonsterCard data={dead} />
+            <MonsterCard data={unknown} />
           )}
         </div>
       </div>

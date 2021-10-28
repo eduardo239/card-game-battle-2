@@ -13,7 +13,7 @@ const Item = ({ data, index }) => {
   return (
     <section className='list-item'>
       <span>
-        <FlIcon className='icon-bg-light' /> {data?.name}
+        <FlIcon className='icon-bg-light' />[{index}] {data?.name}
       </span>
       <span>
         <DoIcon className='icon-bg-light' /> {data?.description}
@@ -21,7 +21,6 @@ const Item = ({ data, index }) => {
       <span>
         <CeIcon className='icon-bg-light' /> {data?.type}
       </span>
-
       <span>
         <AtIcon className='icon-bg-light' /> {data?.value}
       </span>

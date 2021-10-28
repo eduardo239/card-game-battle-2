@@ -11,7 +11,7 @@ const Page2 = () => {
   const { monsters: userMonsters } = useSelector(state => state.user);
 
   return (
-    <section>
+    <section className='page-2'>
       <PageCards title='Select 3 the Monsters' data={monsters} type='monsters'>
         <div>
           <Link to='/page-1'>

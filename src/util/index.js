@@ -6,6 +6,6 @@ export function isEmpty(obj) {
   return true;
 }
 
-export function generateRandomNumberInterval(min, max) {
+export function randomNumberInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }

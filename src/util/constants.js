@@ -35,3 +35,16 @@ export const POSITION_TYPE9 = [
 ];
 
 export const POSITION_TYPE3 = ['ITEM', '???'];
+
+export const unknown = {
+  id: 999,
+  name: 'Unknown',
+  description: '???',
+  rarity: '???',
+  type: '???',
+  price: '???',
+  value: '???',
+  image: '/img/items/potion_c_small.png',
+  icon: 'fas fa-flask',
+  poster: '/assets/cards/unknown.jpg'
+};
