@@ -57,8 +57,31 @@ export const userSlice = createSlice({
         state.gold -= action.payload.price;
       }
     },
-    useItem: (state, action) => {
-      state.items.splice(action.payload, 1);
+    userUseItem: (state, action) => {
+      state.items.splice(action.payload.i, 1);
+
+      switch (action.payload.item.type) {
+        case 'heal':
+          console.log('heal');
+          state.hero.hp += action.payload.item.value;
+          break;
+        case 'mana':
+          console.log('mana');
+          state.hero.mp += action.payload.item.value;
+          break;
+        case 'poison':
+          console.log('poison');
+          // TODO:
+          break;
+        case 'damage':
+          // TODO:
+          break;
+        case 'gold':
+          state.gold += action.payload.item.value;
+          break;
+        default:
+          break;
+      }
     },
     restart: state => {
       state.hero = {};
@@ -77,6 +100,7 @@ export const {
   addMap,
   addGold,
   buyItem,
+  userUseItem,
   removeHero,
   removeMonster,
   removeItem,

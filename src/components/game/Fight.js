@@ -17,7 +17,9 @@ const Fight = () => {
   const { enemy, enemyMonsterDown, heroMonsterDown } = useSelector(
     state => state.game
   );
-  const { monsters, heroMonsterIndex } = useSelector(state => state.user);
+  const { monsters, heroMonsterIndex, items } = useSelector(
+    state => state.user
+  );
 
   const fight = () => {
     dispatch(heroMonsterDamage({ damage: randomNumberInterval(5, 10) }));
@@ -61,7 +63,11 @@ const Fight = () => {
       </div>
       <div className='page-buttons'>
         <div>
-          <button className='btn btn-secondary' onClick={useItem}>
+          <button
+            className='btn btn-secondary'
+            onClick={useItem}
+            disabled={items.length === 0}
+          >
             Use Item
           </button>
           <button className='btn btn-primary' onClick={fight}>
