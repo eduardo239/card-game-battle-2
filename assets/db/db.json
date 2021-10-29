@@ -197,55 +197,6 @@
       "poster": "/assets/items/po-md-mn.jpg"
     },
     {
-      "id": 5,
-      "name": "Potion HP(100)",
-      "description": "Cura 100 de vida",
-      "rarity": "epic",
-      "type": "health",
-      "price": 300,
-      "value": 100,
-      "image": "/img/items/potion_c_small.png",
-      "icon": "fas fa-flask",
-      "poster": "/assets/items/po-lg-hp.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Mana MP(100)",
-      "description": "Cura 100 de mana",
-      "rarity": "epic",
-      "type": "mana",
-      "price": 300,
-      "value": 100,
-      "image": "/img/items/mana_c_small.png",
-      "icon": "fas fa-vial",
-      "poster": "/assets/items/po-lg-mn.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Potion HP(150)",
-      "description": "Cura 150 de vida",
-      "rarity": "legendary",
-      "type": "health",
-      "price": 500,
-      "value": 150,
-      "image": "/img/items/potion_c_small.png",
-      "icon": "fas fa-flask",
-      "poster": "/assets/items/po-xl-hp.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Mana MP(150)",
-      "description": "Cura 150 de mana",
-      "rarity": "legendary",
-      "type": "mana",
-      "price": 500,
-      "value": 150,
-      "image": "/img/items/mana_c_small.png",
-      "icon": "fas fa-vial",
-      "poster": "/assets/items/po-xl-mn.jpg"
-    },
-
-    {
       "id": 9,
       "name": "Poison (50)",
       "description": "50 de dano no inimigo",
@@ -268,54 +219,6 @@
       "image": "/img/items/unknown_c_small.png",
       "icon": "fas fa-bomb",
       "poster": "/assets/items/po-md-pz.jpg"
-    },
-    {
-      "id": 11,
-      "name": "Poison (150)",
-      "description": "150 de dano no inimigo",
-      "rarity": "epic",
-      "type": "bomb",
-      "price": 240,
-      "value": 150,
-      "image": "/img/items/unknown_c_small.png",
-      "icon": "fas fa-bomb",
-      "poster": "/assets/items/po-lg-pz.jpg"
-    },
-    {
-      "id": 12,
-      "name": "Poison (200)",
-      "description": "200 de dano no inimigo",
-      "rarity": "legendary",
-      "type": "bomb",
-      "price": 320,
-      "value": 200,
-      "image": "/img/items/unknown_c_small.png",
-      "icon": "fas fa-bomb",
-      "poster": "/assets/items/po-xl-pz.jpg"
-    },
-    {
-      "id": 13,
-      "name": "Poison (250)",
-      "description": "250 de dano no inimigo",
-      "rarity": "legendary",
-      "type": "bomb",
-      "price": 400,
-      "value": 250,
-      "image": "/img/items/unknown_c_small.png",
-      "icon": "fas fa-bomb",
-      "poster": "/assets/items/po-xxl-pz.jpg"
-    },
-    {
-      "id": 14,
-      "name": "Poison (300)",
-      "description": "300 de dano no inimigo",
-      "rarity": "legendary",
-      "type": "bomb",
-      "price": 480,
-      "value": 300,
-      "image": "/img/items/unknown_c_small.png",
-      "icon": "fas fa-bomb",
-      "poster": "/assets/items/po-xxxl-pz.jpg"
     }
   ]
 }
