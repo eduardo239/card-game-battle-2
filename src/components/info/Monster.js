@@ -24,12 +24,14 @@ const Monster = ({ data, index }) => {
       <span>
         <PoIcon className='icon-bg-light' /> {data?.mp}
       </span>
-      <button
-        className='btn-icon mr-8'
-        onClick={() => dispatch(removeMonster(index))}
-      >
-        <TiIcon />
-      </button>
+      <span>
+        <button
+          className='btn-icon'
+          onClick={() => dispatch(removeMonster(index))}
+        >
+          <TiIcon />
+        </button>
+      </span>
     </section>
   );
 };

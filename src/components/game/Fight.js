@@ -45,7 +45,7 @@ const Fight = () => {
       <div className='page'>
         <h4>Título da Página</h4>
 
-        <div className='flex flex-space-between gap-10 flex-1'>
+        <div className='page-battle'>
           {!isEmpty(monsters[heroMonsterIndex]) ? (
             <HeroCard data={monsters[heroMonsterIndex]} />
           ) : (

@@ -34,10 +34,7 @@ const ModalUnknown = ({ type }) => {
       <div className='page-buttons'>
         {!showCard ? (
           <>
-            <button
-              className='btn btn-secondary'
-              // onClick={() => dispatch(closeRewardModal())}
-            >
+            <button className='btn btn-secondary' onClick={close}>
               cancel
             </button>
             <button className='btn btn-primary' onClick={accept}>

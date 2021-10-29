@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <section className='page-1'>
+    <section className='page-1 home'>
       <h1>CARD GAME BATTLE</h1>
       <div className='flex'>
         <Link to='/page-1'>

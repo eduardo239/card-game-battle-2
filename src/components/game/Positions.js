@@ -34,6 +34,7 @@ const Positions = () => {
                       : 'none'
                   } ${p === i ? 'current' : p > i ? 'passed' : ''}`}
                 >
+                  <span className='absolute-top-right position-index'>{i}</span>
                   {p <= i ? (
                     <>
                       {position === 'ITEM' ? (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TIME_DELAY } from '../../util/constants';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   getNewPosition,
   toggleShopModal,
@@ -16,6 +17,7 @@ import { ReactComponent as RsIcon } from '../../assets/uil_backward.svg';
 
 const MenuGame = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [disable, setDisable] = React.useState(false);
   const { map } = useSelector(state => state.game);
   const { monsters, hero } = useSelector(state => state.user);
@@ -36,30 +38,31 @@ const MenuGame = () => {
   const restarting = () => {
     dispatch(GR());
     dispatch(UR());
+    history.push('/');
   };
 
   return (
-    <section className='flex'>
+    <section className='flex mg-game-menu'>
       <button
         className='btn btn-primary'
         onClick={() => play()}
         disabled={disable || isEmpty(map) || monsters.length === 0}
       >
-        JOGAR <PlIcon />
+        <span>JOGAR</span> <PlIcon />
       </button>
       <button
         className='btn btn-secondary'
         disabled={disable || isEmpty(hero)}
         onClick={() => dispatch(toggleShopModal())}
       >
-        loja <SpIcon />
+        <span>loja</span> <SpIcon />
       </button>
       <button
         className='btn btn-secondary'
         onClick={restarting}
         disabled={disable}
       >
-        reiniciar <RsIcon />
+        <span>reiniciar</span> <RsIcon />
       </button>
     </section>
   );

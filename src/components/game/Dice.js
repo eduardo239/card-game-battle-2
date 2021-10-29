@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 const Dice = () => {
   const { dice } = useSelector(state => state.game);
   return (
-    <section className='mt-10 mb-10'>
+    <section className='mt-10 mb-10 mb-dice'>
       <OnIcon className={`dice ${dice === 1 ? 'dice-active' : ''}`} />
       <TwIcon className={`dice ${dice === 2 ? 'dice-active' : ''}`} />
       <ThIcon className={`dice ${dice === 3 ? 'dice-active' : ''}`} />

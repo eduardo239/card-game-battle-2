@@ -54,3 +54,30 @@ function getFixedCounter(k) {
     }
   };
 }
+
+/*
+eita # efeeito
+eita ## efeito
+eita ### efeito
+
+## efeito
+### efeito
+
+eita ## efeito
+eita ### efeito
+## efeito
+eita ### efeito
+
+function match '## efeito' and 'eita # efeito'
+*/
+function match(str) {
+  var regex = /^(#{1,6})\s(.*)$/;
+  var match = regex.exec(str);
+  if (match) {
+    return {
+      level: match[1].length,
+      text: match[2]
+    };
+  }
+}
+console.log(match('## efeito'));

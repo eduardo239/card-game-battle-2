@@ -26,12 +26,11 @@ const Map = ({ data, index }) => {
       <span>
         <PoIcon className='icon-bg-light' /> {data?.value}
       </span>
-      <button
-        className='btn-icon mr-8'
-        onClick={() => dispatch(removeMap(index))}
-      >
-        <TiIcon />
-      </button>
+      <span>
+        <button className='btn-icon' onClick={() => dispatch(removeMap(index))}>
+          <TiIcon />
+        </button>
+      </span>
     </section>
   );
 };

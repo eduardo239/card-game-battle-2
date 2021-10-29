@@ -70,6 +70,7 @@ span {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 input {
@@ -159,16 +160,16 @@ hr {
   outline: none;
   border: 2px solid transparent;
   border-radius: 0;
-  min-width: 160px;
-  max-width: 200px;
-  width: 100%;
+
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: var(--font-h6);
   /* icon */
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
+  margin-right: 2px;
 }
 
 .btn-small {
@@ -247,7 +248,7 @@ hr {
   background: var(--light);
   color: var(--dark);
   border: 3px solid var(--primary);
-  width: 200px;
+  max-width: 200px;
 }
 
 .card-poster {
@@ -340,6 +341,10 @@ hr {
   max-height: 460px;
 }
 
+.page-battle {
+  display: flex;
+  align-items: center;
+}
 .page-1 {
   display: flex;
   justify-content: center;
@@ -384,7 +389,7 @@ hr {
   background-color: #f1f1f1;
   border: 2px solid #333;
   padding: 4px;
-  max-height: 500px;
+  min-height: 50vh;
   overflow-y: scroll;
 }
 .positions {
@@ -393,11 +398,16 @@ hr {
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.position-index {
+  font-size: 0.6rem;
+  padding: 0.1rem;
+  letter-spacing: 0.4px;
+}
 .po {
   height: 130px;
   width: 130px;
 
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -434,9 +444,9 @@ hr {
 }
 
 .current {
-  background-color: var(--light);
+  background-color: var(--orange);
   color: var(--dark);
-  border: 2px dashed var(--danger);
+  border: 2px dashed orangered;
 }
 .passed {
   background-color: var(--dark);
@@ -454,10 +464,10 @@ hr {
   display: grid;
   grid-template-columns: 1fr repeat(6, auto);
   align-items: center;
-
   border: 1px solid #343434;
   padding: 4px;
   margin-bottom: 4px;
+  width: 100%;
 }
 .list-item > span {
   border-right: 1px solid #343434;
@@ -544,7 +554,43 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
+  .btn {
+  }
+  .home {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .mg-game-menu button {
+    width: auto !important;
+  }
+  .mg-game-menu button span {
+    display: none;
+  }
+  .page,
+  .page-body {
+    padding: 1rem 0.5rem;
+  }
+  .mb-dice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mb-dice > svg {
+    height: 2.8rem;
+    width: 2.8rem;
+  }
+  .list-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
   .card {
-    width: 150px;
+    max-width: 150px;
+  }
+  .card-body {
+    padding: 4px;
+  }
+  .btn-icon {
+    width: 2rem;
+    height: 2rem;
   }
 }

@@ -24,12 +24,14 @@ const Item = ({ data, index }) => {
       <span>
         <AtIcon className='icon-bg-light' /> {data?.value}
       </span>
-      <button
-        className='btn-icon mr-8'
-        onClick={() => dispatch(removeItem(index))}
-      >
-        <TiIcon />
-      </button>
+      <span>
+        <button
+          className='btn-icon'
+          onClick={() => dispatch(removeItem(index))}
+        >
+          <TiIcon />
+        </button>
+      </span>
     </section>
   );
 };

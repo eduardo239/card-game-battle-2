@@ -29,9 +29,11 @@ const Hero = ({ data }) => {
       <span>
         <GoIcon className='icon-bg-light' /> {gold ? gold : 0}
       </span>
-      <button className='btn-icon mr-8' onClick={() => dispatch(removeHero())}>
-        <TiIcon />
-      </button>
+      <span>
+        <button className='btn-icon ' onClick={() => dispatch(removeHero())}>
+          <TiIcon />
+        </button>
+      </span>
     </section>
   );
 };

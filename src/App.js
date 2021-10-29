@@ -70,8 +70,6 @@ function App() {
         </Route>
       </Switch>
 
-      <hr />
-
       {/* <Alert type='success' message=' A simple primary alert—check it out!' />
       <Alert type='danger' message=' A simple primary alert—check it out!' />
       <Alert type='info' message=' A simple primary alert—check it out!' /> */}
