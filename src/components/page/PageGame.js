@@ -12,6 +12,7 @@ import Alert from '../messages/Alert';
 import Fight from '../game/Fight';
 import SelectMonster from '../game/SelectMonster';
 import Item from '../game/Item';
+import UserCards from '../game/Cards';
 // info
 import InfoItem from '../info/Item';
 import InfoMonster from '../info/Monster';
@@ -27,7 +28,8 @@ const PageGame = () => {
     isFighting,
     isUnknown,
     isReward,
-    isItem
+    isItem,
+    isUsingItem
   } = useSelector(state => state.game.modal);
   const { items, monsters, hero } = useSelector(state => state.user);
   const { map } = useSelector(state => state.game);
@@ -56,6 +58,9 @@ const PageGame = () => {
       </Modal>
       <Modal show={isUnknown}>
         <Item type='unknown' />
+      </Modal>
+      <Modal show={isUsingItem}>
+        <UserCards data={items} title='User Items' type='items' />
       </Modal>
       {/*  */}
       <div className='flex flex-column'>

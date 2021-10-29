@@ -111,6 +111,9 @@ export const gameSlice = createSlice({
     toggleSelectMonsterModal: state => {
       state.modal.isSelectingMonster = !state.modal.isSelectingMonster;
     },
+    toggleUseItemModal: state => {
+      state.modal.isUsingItem = !state.modal.isUsingItem;
+    },
     closeItemModal: state => {
       state.modal.isItem = false;
       state.modal.isUnknown = false;
@@ -185,6 +188,7 @@ export const {
   checkPositionType,
   toggleShopModal,
   toggleSelectMonsterModal,
+  toggleUseItemModal,
   openFightingModal,
   closeFightingModal,
   closeItemModal,

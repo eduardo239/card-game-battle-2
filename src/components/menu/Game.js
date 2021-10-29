@@ -18,7 +18,7 @@ const MenuGame = () => {
   const dispatch = useDispatch();
   const [disable, setDisable] = React.useState(false);
   const { map } = useSelector(state => state.game);
-  const { monsters } = useSelector(state => state.user);
+  const { monsters, hero } = useSelector(state => state.user);
 
   const play = () => {
     let time = TIME_DELAY;
@@ -49,7 +49,7 @@ const MenuGame = () => {
       </button>
       <button
         className='btn btn-secondary'
-        disabled={disable}
+        disabled={disable || isEmpty(hero)}
         onClick={() => dispatch(toggleShopModal())}
       >
         loja <SpIcon />

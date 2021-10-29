@@ -5,7 +5,8 @@ import { heroMonsterDamage, addGold } from '../../store/user';
 import {
   enemyMonsterDamage,
   closeFightingModal,
-  getPrize
+  getPrize,
+  toggleUseItemModal
 } from '../../store/game';
 import HeroCard from '../card/Hero';
 import MonsterCard from '../card/Monster';
@@ -21,6 +22,10 @@ const Fight = () => {
   const fight = () => {
     dispatch(heroMonsterDamage({ damage: randomNumberInterval(5, 10) }));
     dispatch(enemyMonsterDamage({ damage: randomNumberInterval(50, 95) }));
+  };
+
+  const useItem = () => {
+    dispatch(toggleUseItemModal());
   };
 
   useEffect(() => {
@@ -56,7 +61,9 @@ const Fight = () => {
       </div>
       <div className='page-buttons'>
         <div>
-          <button className='btn btn-secondary'>Use Item</button>
+          <button className='btn btn-secondary' onClick={useItem}>
+            Use Item
+          </button>
           <button className='btn btn-primary' onClick={fight}>
             HIT
           </button>

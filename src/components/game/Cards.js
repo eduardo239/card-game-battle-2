@@ -5,7 +5,7 @@ import CardMap from '../card/Map';
 import CardItem from '../card/Item';
 import CardItemShop from '../card/ItemShop';
 import { useDispatch, useSelector } from 'react-redux';
-import { addHero, addItem, addMonster } from '../../store/user';
+import { addHero, addItem, addMonster, buyItem } from '../../store/user';
 import { addMap, toggleShopModal } from '../../store/game';
 import {
   POSITION_TYPE1,
@@ -19,7 +19,8 @@ const Cards = ({ children, title, data, type, closeButton = false }) => {
   const {
     hero: he,
     monsters: ms,
-    items: it
+    items: it,
+    gold
   } = useSelector(state => state.user);
   const { map: mp } = useSelector(state => state.game);
 
@@ -114,17 +115,29 @@ const Cards = ({ children, title, data, type, closeButton = false }) => {
     });
   };
 
+  const buy = (item, index) => {
+    if (gold >= item.price) {
+      dispatch(buyItem(item, index));
+    } else {
+      alert('Você não tem ouro suficiente');
+    }
+  };
+
   const mapOverItemsShop = () => {
     return data?.map(item => {
       return (
         <CardItemShop key={item.id} data={item}>
           <div>
-            <button className='btn btn-primary'>Comprar</button>
+            <button className='btn btn-primary' onClick={() => buy(item)}>
+              Comprar
+            </button>
           </div>
         </CardItemShop>
       );
     });
   };
+
+  // TODO: use items
 
   return (
     <section className='page-container'>

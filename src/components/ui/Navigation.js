@@ -7,7 +7,7 @@ const Navigation = () => {
       <li>
         <Link to='/'>Home</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to='/page-1'>Hero</Link>
       </li>
       <li>
@@ -25,7 +25,7 @@ const Navigation = () => {
 
       <li>
         <Link to='/page-shop'>Shop</Link>
-      </li>
+      </li> */}
     </ul>
   );
 };

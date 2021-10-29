@@ -5,7 +5,7 @@ const initialState = {
   map: {},
   items: [],
   monsters: [],
-  gold: 0,
+  gold: 300,
 
   heroMonsterIndex: null,
   isGameOver: false
@@ -51,7 +51,15 @@ export const userSlice = createSlice({
         state.isGameOver = true;
       }
     },
-
+    buyItem: (state, action) => {
+      if (state.gold > action.payload.price) {
+        state.items.push(action.payload);
+        state.gold -= action.payload.price;
+      }
+    },
+    useItem: (state, action) => {
+      state.items.splice(action.payload, 1);
+    },
     restart: state => {
       state.hero = {};
       state.map = {};
@@ -68,6 +76,7 @@ export const {
   addItem,
   addMap,
   addGold,
+  buyItem,
   removeHero,
   removeMonster,
   removeItem,

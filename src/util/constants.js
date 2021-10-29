@@ -22,7 +22,7 @@ export const POSITION_TYPE2 = [
   'ITEM',
   'TRAP'
 ];
-export const POSITION_TYPE9 = [
+export const POSITION_TYPE3 = [
   '_',
   'FIGHT',
   'FIGHT',
@@ -34,7 +34,7 @@ export const POSITION_TYPE9 = [
   'TRAP'
 ];
 
-export const POSITION_TYPE3 = ['ITEM', '???'];
+export const POSITION_TYPE4 = ['ITEM', '???'];
 
 export const unknown = {
   id: 999,
