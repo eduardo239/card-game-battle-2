@@ -24,8 +24,16 @@ const ModalUnknown = ({ type }) => {
   return (
     <section className='page-container'>
       <div className='page'>
-        <h4>gift-or-gift ???</h4>
-        {type}
+        <h4>
+          {type === 'gift'
+            ? 'Congratulations!'
+            : type === 'unknown'
+            ? 'trick-or-treat'
+            : type === 'item'
+            ? 'Item'
+            : '...'}
+        </h4>
+
         <div className='page-body'>
           {!showCard && <CardItem data={unknown} />}
           {showCard && !isEmpty(gift) && <CardItem data={gift} />}

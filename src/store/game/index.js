@@ -124,16 +124,18 @@ export const gameSlice = createSlice({
         state.monsters[Math.floor(Math.random() * state.monsters.length)];
       state.modal.isFighting = true;
     },
-    closeFightingModal: state => {
+    closeFightingModal: (state, action) => {
       state.modal.isFighting = false;
       // state.modal.isReward  = false;
       state.enemyMonsterDown = false;
       state.heroMonsterDown = false;
       state.enemy = {};
 
-      let r = state.items[Math.floor(Math.random() * state.items.length)];
-      state.gift = r;
-      state.modal.isReward = true;
+      if (action.payload.gift) {
+        let r = state.items[Math.floor(Math.random() * state.items.length)];
+        state.gift = r;
+        state.modal.isReward = true;
+      }
     },
     generateRandomItem: state => {
       let r = state.items[Math.floor(Math.random() * state.items.length)];

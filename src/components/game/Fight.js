@@ -32,10 +32,10 @@ const Fight = () => {
 
   useEffect(() => {
     if (heroMonsterDown) {
-      dispatch(closeFightingModal());
+      dispatch(closeFightingModal({ gift: false }));
       dispatch(getPrize({ won: false, gold: 0 }));
     } else if (enemyMonsterDown) {
-      dispatch(closeFightingModal());
+      dispatch(closeFightingModal({ gift: true }));
       const gold = randomNumberInterval(30, 60);
       dispatch(getPrize({ won: true, gold }));
       dispatch(addGold(gold));
@@ -47,7 +47,7 @@ const Fight = () => {
       <div className='page'>
         <h4>Título da Página</h4>
 
-        <div className='page-battle'>
+        <div className='page-body'>
           {!isEmpty(monsters[heroMonsterIndex]) ? (
             <HeroCard data={monsters[heroMonsterIndex]} />
           ) : (
@@ -75,7 +75,7 @@ const Fight = () => {
           </button>
           <button
             className='btn btn-secondary'
-            onClick={() => dispatch(closeFightingModal())}
+            onClick={() => dispatch(closeFightingModal({ gift: false }))}
           >
             Flee
           </button>

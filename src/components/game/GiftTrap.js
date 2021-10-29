@@ -4,7 +4,7 @@ import React from 'react';
 const GiftTrap = () => {
   return (
     <section className='page-container'>
-      <div className='page mw-700'>
+      <div className='page'>
         <h4>Título da Página</h4>
         <div className='flex-center-center gap-10 flex-1'>
           <h1>????</h1>

@@ -40,7 +40,12 @@ const PageGame = () => {
       <div className='flex'>
         <Dice />
       </div>
-      <Positions />
+      {!isEmpty(map) ? (
+        <Positions />
+      ) : (
+        <Alert type='info' message='Missing something' show={true} />
+      )}
+
       <Modal show={isShopping}>
         <ModalShop />
       </Modal>
