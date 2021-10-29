@@ -20,6 +20,10 @@
   --font-h3: 2.369rem;
   --font-h2: 3.157rem;
   --font-h1: 4.209rem;
+
+  --shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
+    rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+    rgba(240, 46, 170, 0.05) 0px 25px;
 }
 
 *,
@@ -105,6 +109,12 @@ hr {
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+.flex-end {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .flex-center-center {
   display: flex;
@@ -323,29 +333,17 @@ hr {
   justify-content: flex-end;
 }
 /* ----------------------- page ----------------------- */
-/* FIXME: */
-.mw-700 {
-  min-width: 700px;
-}
-.mw-100 {
-  min-width: 100%;
-}
-
-/* TODO: fixme */
 .page {
   background: var(--light);
   color: var(--dark);
-  padding: 2rem;
+  padding: 1.25rem 1rem 3rem;
   display: flex;
   flex-direction: column;
-  max-width: 720px;
-  max-height: 460px;
+  width: calc(100vw - 2rem);
+  height: 60vh;
+  box-shadow: var(--shadow);
 }
 
-.page-battle {
-  display: flex;
-  align-items: center;
-}
 .page-1 {
   display: flex;
   justify-content: center;
@@ -366,12 +364,14 @@ hr {
   overflow-y: auto;
   grid-gap: 1rem;
   gap: 1rem;
+  padding: 1rem;
   flex: 1;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .page-buttons {
   position: absolute;
@@ -404,7 +404,6 @@ hr {
   padding: 0.1rem;
   letter-spacing: 0.4px;
   z-index: 1;
-  /* FIXME: */
 }
 .po {
   height: 130px;
@@ -484,11 +483,11 @@ hr {
 
 .alert {
   position: relative;
-  padding: 10px 20px;
+  padding: 0.8rem 1.45rem;
   margin-bottom: 1rem;
-  border: 2px solid transparent;
-  border-radius: 0rem;
-  font-size: var(--font-small);
+  border: none;
+  border-radius: 0;
+  font-size: var(--font-mono);
 
   display: flex;
   align-items: center;
@@ -497,12 +496,10 @@ hr {
 .alert-success {
   color: var(--dark);
   background-color: var(--success);
-  border-color: var(--dark);
 }
 .alert-danger {
   color: var(--light);
   background-color: var(--danger);
-  border-color: var(--light);
 }
 .alert-danger svg path {
   fill: var(--light);
@@ -510,7 +507,6 @@ hr {
 .alert-info {
   color: var(--light);
   background-color: var(--info);
-  border-color: var(--light);
 }
 .alert-info svg path {
   fill: var(--light);
@@ -557,11 +553,13 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
-  .btn {
-  }
-  .home {
+  .mb-home {
     flex-direction: column;
     gap: 2rem;
+  }
+  .mb-home h1 {
+    text-align: center;
+    font-size: var(--font-h3);
   }
   .mg-game-menu button {
     width: auto !important;
