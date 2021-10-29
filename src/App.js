@@ -50,6 +50,9 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
+        <Route exact path='/card-game-battle-2'>
+          <Home />
+        </Route>
         <Route path='/page-1'>
           <Page1 />
         </Route>

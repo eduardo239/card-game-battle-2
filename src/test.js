@@ -81,3 +81,6 @@ function match(str) {
   }
 }
 console.log(match('## efeito'));
+
+// regex to match 'ABC' or 'ABC DEF'
+var regex = /^(ABC)\s(.*)$/;
